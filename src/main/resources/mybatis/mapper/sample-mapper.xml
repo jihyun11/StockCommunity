@@ -5,8 +5,17 @@
         SELECT 1
     </select>
 
-    <select id="selectStock" resultType="String">
-        SELECT * FROM stockcontent
+    <select id="selectStock" resultType="com.jihyun.stockcommunity.domain.StockCommunity">
+        SELECT
+            username as username,
+            content as content,
+        FROM
+            stockcontent
     </select>
+
+    <insert id="insertStock" parameterType="com.jihyun.stockcommunity.domain.StockCommunity">
+        INSERT INTO stockmember (username, password)
+        VALUES (#{username}, #{password})
+    </insert>
 
 </mapper>

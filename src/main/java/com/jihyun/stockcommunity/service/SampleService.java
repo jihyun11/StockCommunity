@@ -17,4 +17,5 @@ public class SampleService {
     public int selectSample() {
         return sampleMapper.selectSample();
     }
+
 }

@@ -1,11 +1,20 @@
 package com.jihyun.stockcommunity.controller;
 
+import com.jihyun.stockcommunity.domain.StockCommunity;
+import com.jihyun.stockcommunity.service.StockService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomeController {
+
+    private final StockService stockService;
+
+    public HomeController(StockService stockService) {
+        this.stockService = stockService;
+    }
+
     @GetMapping("/")
     public String ladybug() {
         return "index";
@@ -17,8 +26,10 @@ public class HomeController {
     }
 
     @PostMapping("/members/new")
-    public String memberRight() {
+    public String memberRight(StockCommunity stockCommunity) {
 
+        stockService.insertStock();
+        System.out.println("회원가입 컨트롤러 작동");
         return "redirect:/";
     }
 

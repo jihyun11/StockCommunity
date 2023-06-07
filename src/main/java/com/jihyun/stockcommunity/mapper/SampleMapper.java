@@ -14,6 +14,6 @@ public interface SampleMapper {
 
 
 //    @Insert("INSERT INTO stockmember (username, password) VALUES (#{username}, #{password})")
-    String insertStock();
+    void insertStock();
 
 }

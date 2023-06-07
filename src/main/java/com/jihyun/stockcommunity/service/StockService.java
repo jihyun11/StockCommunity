@@ -18,7 +18,7 @@ public class StockService {
         return sampleMapper.selectStock();
     }
 
-    public String insertStock() {
-        return sampleMapper.insertStock();
+    public void insertStock(StockCommunity stockCommunity) {
+        sampleMapper.insertStock();
     }
 }

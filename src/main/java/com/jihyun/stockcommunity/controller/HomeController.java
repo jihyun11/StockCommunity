@@ -26,11 +26,14 @@ public class HomeController {
     }
 
     @PostMapping("/members/new")
-    public String memberRight(StockCommunity stockCommunity) {
+    public void memberRight(StockCommunity stockCommunity) {
+        StockCommunity stockCommunity1 = new StockCommunity();
+        stockCommunity1.setUsername(stockCommunity.getUsername());
+        stockCommunity1.setPassword(stockCommunity.getPassword());
 
-        stockService.insertStock();
+        stockService.insertStock(stockCommunity1);
         System.out.println("회원가입 컨트롤러 작동");
-        return "redirect:/";
+//        return "redirect:/";
     }
 
     @GetMapping("/members/content")

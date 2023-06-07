@@ -14,6 +14,10 @@ public class StockCommunity {
         this.username = username;
         this.password = password; //혹시몰라 생성자도 추가해봄...
     }
+    public StockCommunity() {
+        this.username = username;
+        this.password = password; //혹시몰라 생성자도 추가해봄...
+    }
 //    private String content;
 //    private String title;
 }

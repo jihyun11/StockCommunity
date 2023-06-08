@@ -5,10 +5,19 @@
         SELECT 1
     </select>
 
-    <select id="selectStock" resultType="com.jihyun.stockcommunity.domain.StockCommunity">
+    <select id="selectAllStock" resultType="com.jihyun.stockcommunity.domain.StockCommunity">
         SELECT
-            username as username,
-            content as content,
+            username,
+            password
+        FROM
+            stockmember
+    </select>
+
+    <select id="selectAllContentStock" resultType="com.jihyun.stockcommunity.domain.ContentCommunity">
+        SELECT
+            username,
+            content,
+            title
         FROM
             stockcontent
     </select>
@@ -18,9 +27,11 @@
         VALUES (#{username}, #{password})
     </insert>
 
-    <insert id="insertContentStock" parameterType="com.jihyun.stockcommunity.domain.StockCommunity">
+    <insert id="insertContentStock" parameterType="com.jihyun.stockcommunity.domain.ContentCommunity">
         INSERT INTO stockcontent (username, content, title)
         values (#{username}, #{content}, #{title})
     </insert>
+
+
 
 </mapper>

@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Mapper
 public interface SampleMapper {
 
@@ -19,5 +21,9 @@ public interface SampleMapper {
     void insertStock(StockCommunity stockCommunity);
 
     void insertContentStock(ContentCommunity contentCommunity);
+
+    List<StockCommunity> selectAllStock();
+
+    List<ContentCommunity> selectAllContentStock();
 
 }

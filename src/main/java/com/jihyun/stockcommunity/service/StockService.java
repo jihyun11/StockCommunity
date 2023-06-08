@@ -6,6 +6,8 @@ import com.jihyun.stockcommunity.mapper.SampleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StockService {
     private final SampleMapper sampleMapper;
@@ -26,4 +28,15 @@ public class StockService {
     public void insertContentStock(ContentCommunity contentCommunity) {
         sampleMapper.insertContentStock(contentCommunity);
     }
+
+    public List<StockCommunity> getStockList() {
+        return sampleMapper.selectAllStock();
+
+    }
+
+    public List<ContentCommunity> getContentStockList() {
+        return sampleMapper.selectAllContentStock();
+    }
+
+
 }

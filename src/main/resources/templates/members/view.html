@@ -9,13 +9,11 @@
 <table>
     <tr>
         <th>UserName</th>
-        <th>Content</th>
-        <th>Title</th>
+        <th>Password</th>
     </tr>
     <tr th:each="stock : ${stockList}">
         <td th:text="${stock.username}"></td>
-        <td th:text="${stock.content}"></td>
-        <td th:text="${stock.title}"></td>
+        <td th:text="${stock.password}"></td>
     </tr>
 </table>
 

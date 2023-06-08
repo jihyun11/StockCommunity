@@ -4,8 +4,11 @@ import com.jihyun.stockcommunity.domain.ContentCommunity;
 import com.jihyun.stockcommunity.domain.StockCommunity;
 import com.jihyun.stockcommunity.service.StockService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -27,14 +30,14 @@ public class HomeController {
     }
 
     @PostMapping("/members/new")
-    public void memberRight(StockCommunity stockCommunity) {
+    public String memberRight(StockCommunity stockCommunity) {
         StockCommunity stockCommunity1 = new StockCommunity();
         stockCommunity1.setUsername(stockCommunity.getUsername());
         stockCommunity1.setPassword(stockCommunity.getPassword());
 
         stockService.insertStock(stockCommunity1);
         System.out.println("회원가입 컨트롤러 작동");
-//        return "redirect:/";
+        return "redirect:/";
     }
 
     @GetMapping("/members/content")
@@ -56,8 +59,21 @@ public class HomeController {
         return "redirect:/";
     }
     @GetMapping("/members/view")
-    public String view() {
-        return "/members/view";
+    public String view(Model model) {
+            List<StockCommunity> stockList = stockService.getStockList();
+            model.addAttribute("stockList", stockList);
+            System.out.println("회원목록 조회 기능 컨트롤러 작동");
+            return "/members/view";
+
     }
+
+    @GetMapping("/members/contentview")
+    public String contentview(Model model) {
+        List<ContentCommunity> stockContentList = stockService.getContentStockList();
+        model.addAttribute("stockContentList", stockContentList);
+        System.out.println("게시글목록 조회 기능 컨트롤러 작동");
+        return "/members/contentview";
+    }
+
 
 }

@@ -18,4 +18,9 @@
         VALUES (#{username}, #{password})
     </insert>
 
+    <insert id="insertContentStock" parameterType="com.jihyun.stockcommunity.domain.StockCommunity">
+        INSERT INTO stockcontent (username, content, title)
+        values (#{username}, #{content}, #{title})
+    </insert>
+
 </mapper>

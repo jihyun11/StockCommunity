@@ -1,5 +1,6 @@
 package com.jihyun.stockcommunity.controller;
 
+import com.jihyun.stockcommunity.domain.ContentCommunity;
 import com.jihyun.stockcommunity.domain.StockCommunity;
 import com.jihyun.stockcommunity.service.StockService;
 import org.springframework.stereotype.Controller;
@@ -40,4 +41,23 @@ public class HomeController {
     public String content() {
         return "/members/content";
     }
+
+    @PostMapping("/members/content")
+    public String insertContent(ContentCommunity contentCommunity) {
+        ContentCommunity contentCommunity1 = new ContentCommunity();
+        contentCommunity1.setUsername(contentCommunity.getUsername());
+        contentCommunity1.setContent(contentCommunity.getContent());
+        contentCommunity1.setTitle(contentCommunity.getTitle());
+
+        stockService.insertContentStock(contentCommunity1);
+
+        System.out.println("게시글 등록 컨트롤러 작동");
+
+        return "redirect:/";
+    }
+    @GetMapping("/members/view")
+    public String view() {
+        return "/members/view";
+    }
+
 }

@@ -5,7 +5,15 @@
     <title></title>
 </head>
 <body>
-<h2>게시글입니다.</h2>
+<form action="/members/content" method="post">
+    <h2>게시글 쓰기</h2>
+    <input type="text" id="username" name="username" placeholder="별명을 입력하세요"><br>
+    <label for="content">내용:</label>
+    <textarea id="content" name="content" required></textarea><br>
+    <label for="title">제목:</label>
+    <input type="text" id="title" name="title" required><br>
+    <input type="submit" value="작성">
+</form>
 
 </body>
 </html>

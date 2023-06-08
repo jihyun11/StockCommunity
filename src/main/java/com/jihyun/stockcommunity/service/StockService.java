@@ -1,5 +1,6 @@
 package com.jihyun.stockcommunity.service;
 
+import com.jihyun.stockcommunity.domain.ContentCommunity;
 import com.jihyun.stockcommunity.domain.StockCommunity;
 import com.jihyun.stockcommunity.mapper.SampleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,10 @@ public class StockService {
     }
 
     public void insertStock(StockCommunity stockCommunity) {
-        sampleMapper.insertStock();
+        sampleMapper.insertStock(stockCommunity);
+    }
+
+    public void insertContentStock(ContentCommunity contentCommunity) {
+        sampleMapper.insertContentStock(contentCommunity);
     }
 }

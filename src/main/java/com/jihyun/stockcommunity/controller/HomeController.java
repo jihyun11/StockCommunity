@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -73,6 +74,56 @@ public class HomeController {
         model.addAttribute("stockContentList", stockContentList);
         System.out.println("게시글목록 조회 기능 컨트롤러 작동");
         return "/members/contentview";
+    }
+
+
+    @GetMapping("/members/bye")
+    public String bye() {
+        return "/members/bye";
+    }
+
+    @PostMapping("/members/bye")
+    public String byeview(@RequestParam("username") String username, @RequestParam("password") String password) {
+        stockService.deleteStockMember(username, password);
+        System.out.println("회원정보 삭제 컨트롤러 작동");
+        return "redirect:/";
+    }
+
+    @GetMapping("/members/contentbye")
+    public String contentbye() {
+        return "/members/contentbye";
+    }
+
+    @PostMapping("/members/contentbye")
+    public String byecontent(@RequestParam("username") String username, @RequestParam("title") String title) {
+        //requestparam 괄호 안에 글자랑 똑같은 컬럼을 찾는 거임
+        stockService.deleteStockContent(username, title);
+        System.out.println("게시글 삭제 컨트롤러 작동");
+        return "redirect:/";
+    }
+
+    @GetMapping("/members/modify")
+    public String modify() {
+        return "/members/modify";
+    }
+
+    @PostMapping("/members/modify")
+    public String newmodify(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("newpassword") String newpassword) {
+        stockService.updateStock(username, password, newpassword);
+        System.out.println("회원정보 수정 컨트롤러 작동");
+        return "redirect:/";
+    }
+
+    @GetMapping("/members/contentmodify")
+    public String mcontent() {
+        return "/members/contentmodify";
+    }
+
+    @PostMapping("/members/contentmodify")
+    public String contentmodify(@RequestParam("username") String username, @RequestParam("newcontent") String newcontent, @RequestParam("newtitle") String newtitle) {
+        stockService.updateContentStock(username, newcontent, newtitle);
+        System.out.println("게시글 수정 기능 컨트롤러 작동");
+        return "redirect:/";
     }
 
 

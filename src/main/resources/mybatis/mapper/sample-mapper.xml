@@ -32,6 +32,28 @@
         values (#{username}, #{content}, #{title})
     </insert>
 
+    <delete id="deleteStock" parameterType="com.jihyun.stockcommunity.domain.StockCommunity">
+        DELETE FROM stockmember
+        WHERE username = #{username} AND password = #{password}
+    </delete>
+
+    <delete id="deleteContentStock" parameterType="com.jihyun.stockcommunity.domain.ContentCommunity">
+        DELETE FROM stockcontent
+        WHERE username = #{username} AND title = #{title}
+    </delete>
+
+    <update id="updateStock" parameterType="com.jihyun.stockcommunity.domain.StockCommunity">
+        UPDATE stockmember
+        SET password = #{newpassword}
+        WHERE username = #{username} AND password = #{password}
+    </update>
+
+    <update id="updateContentStock" parameterType="com.jihyun.stockcommunity.domain.ContentCommunity">
+        UPDATE stockcontent
+        SET content = #{newcontent}, title = #{newtitle}
+        WHERE username = #{username}
+    </update>
+
 
 
 </mapper>

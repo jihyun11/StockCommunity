@@ -38,5 +38,22 @@ public class StockService {
         return sampleMapper.selectAllContentStock();
     }
 
+    public void deleteStockMember(String username, String password) {
+        sampleMapper.deleteStock(username, password);
+
+    }
+
+    public void deleteStockContent (String username, String title) {
+        sampleMapper.deleteContentStock(username, title);
+    }
+
+    public void updateStock(String username, String password, String newpassword) {
+        sampleMapper.updateStock(username, password, newpassword);
+    }
+
+    public void updateContentStock(String username, String newcontent, String newtitle) {
+        sampleMapper.updateContentStock(username, newcontent, newtitle);
+    }
+
 
 }

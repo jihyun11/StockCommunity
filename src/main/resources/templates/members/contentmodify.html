@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>게시글 수정</h2>
+<form action="/members/contentmodify" method="post">
+  <input type="text" id="username" name="username" placeholder="별명을 입력하세요"><br>
+  <label for="content">내용:</label>
+  <textarea id="content" name="newcontent" required></textarea><br>
+  <label for="title">제목:</label>
+  <input type="text" id="title" name="newtitle" required><br>
+  <input type="submit" value="수정">
+</form>
+
+</body>
+</html>

@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-<h2>회원목록</h2>
-<table>
-    <tr>
-        <th>UserName</th>
-        <th>Password</th>
-    </tr>
-    <tr th:each="stock : ${stockList}">
-        <td th:text="${stock.username}"></td>
-        <td th:text="${stock.password}"></td>
-    </tr>
-</table>
-
+<div class="w3-padding w3-display-topmiddle">
+    <h2>회원목록</h2>
+    <table class="w3-table-all">
+        <thead>
+            <tr class="w3-green">
+                <th>UserName</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tr th:each="stock : ${stockList}">
+            <td th:text="${stock.username}"></td>
+            <td th:text="${stock.password}"></td>
+        </tr>
+    </table>
+</div>
 </body>
 </html>

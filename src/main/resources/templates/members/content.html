@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-<form action="/members/content" method="post">
-    <h2>게시글 쓰기</h2>
-    <input type="text" id="username" name="username" placeholder="별명을 입력하세요"><br>
-    <label for="content">내용:</label>
-    <textarea id="content" name="content" required></textarea><br>
-    <label for="title">제목:</label>
-    <input type="text" id="title" name="title" required><br>
-    <input type="submit" value="작성">
-</form>
-
+<div class="w3-padding w3-display-topmiddle">
+    <form action="/members/content" method="post">
+        <h2>게시글 쓰기</h2>
+        <input class="w3-input" type="text" id="username" name="username" placeholder="별명을 입력하세요"><br>
+        <label for="content">내용:</label>
+        <textarea class="w3-input" id="content" name="content" required></textarea><br>
+        <label for="title">제목:</label>
+        <input class="w3-input" type="text" id="title" name="title" required><br>
+        <input class="w3-button w3-green" type="submit" value="작성">
+    </form>
+</div>
 </body>
 </html>

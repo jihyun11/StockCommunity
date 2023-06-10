@@ -5,6 +5,5 @@ spring:
     username: jihyun
     password: '0000'
 
-# MyBatis 설정
 mybatis:
   mapper-locations: classpath:mybatis/mapper/**/*.xml

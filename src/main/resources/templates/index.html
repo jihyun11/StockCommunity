@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>LadyBug</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
-<div>
+<div class="w3-padding w3-display-topmiddle">
     <h1>Hello</h1>
     <p>[주식 커뮤니티]에 오신 것을 환영합니다</p>
     <p>
@@ -23,7 +25,6 @@
         <br>
         <a href="/members/modify">회원정보 수정</a>
         <a href="/members/contentmodify">게시글 수정</a>
-
     </p>
 </div>
 </div>

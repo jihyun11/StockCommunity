@@ -126,5 +126,10 @@ public class HomeController {
         return "redirect:/";
     }
 
+    @GetMapping("/members/login")
+    public String login() {
+        return "/members/login";
+    }
+
 
 }

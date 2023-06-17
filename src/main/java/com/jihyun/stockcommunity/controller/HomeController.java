@@ -2,16 +2,20 @@ package com.jihyun.stockcommunity.controller;
 
 import com.jihyun.stockcommunity.domain.ContentCommunity;
 import com.jihyun.stockcommunity.domain.StockCommunity;
+import com.jihyun.stockcommunity.domain.User;
 import com.jihyun.stockcommunity.service.StockService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
+@Slf4j
 public class HomeController {
 
     private final StockService stockService;
@@ -21,7 +25,12 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String ladybug() {
+    public String ladybug(HttpSession httpSession) {
+        Object first = httpSession.getAttribute("first");
+        if (first != null) {
+            User user = (User) first;
+            log.info("{}", user);
+        }
         return "index";
     }
 
@@ -126,10 +135,7 @@ public class HomeController {
         return "redirect:/";
     }
 
-    @GetMapping("/members/login")
-    public String login() {
-        return "/members/login";
-    }
+
 
 
 }

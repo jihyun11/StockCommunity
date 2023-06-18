@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -44,4 +45,26 @@ public class LoginController {
     public String loginFail() {
         return "/members/loginFail";
     }
+
+    @GetMapping("/members/logout")
+    public String logout() {
+        return "/members/logout";
+    }
+
+    @PostMapping("/members/logout")
+    public String logout(HttpServletRequest request, HttpSession session) {
+        User loginUser = (User) session.getAttribute("first");
+        if (loginUser != null) {
+            String nowUsername = loginUser.getUsername();
+            String nowPassword = loginUser.getPassword();
+            log.info("로그인되어 있던 계정: {}, {}", nowUsername, nowPassword);
+        } //세션에 저장된 정보의 속성명이랑 같으면 되는듯?
+
+        session.invalidate();
+
+        System.out.println("로그아웃 기능 컨트롤러 작동");
+
+        return "redirect:/";
+    }
+
 }

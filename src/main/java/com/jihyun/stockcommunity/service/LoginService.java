@@ -6,6 +6,8 @@ import com.jihyun.stockcommunity.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LoginService {
 
@@ -19,5 +21,9 @@ public class LoginService {
     public User loginSession(String username, String password) {
         User loginUser = memberMapper.login(username, password);
         return loginUser;
+    }
+
+    public List<User> myInfo() {
+        return memberMapper.myinfo();
     }
 }

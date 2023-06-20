@@ -10,5 +10,13 @@
         WHERE username = #{username} AND password = #{password}
     </select>
 
+    <select id="myinfo" resultType="com.jihyun.stockcommunity.domain.User">
+        SELECT
+            username,
+            password
+        FROM
+            stockmember
+    </select>
+
 
 </mapper>

@@ -77,7 +77,7 @@ public class LoginController {
     }
 
     @PostMapping("/members/myinfo")
-    public String myinfo1(Model model, HttpSession session) {
+    public String myinfo1(HttpSession session, Model model) {
         User loginUser = (User) session.getAttribute("first");
         List<User> myInfoList = loginService.myInfo();
         List<User> Info = new ArrayList<>();
@@ -94,5 +94,6 @@ public class LoginController {
         System.out.println("내정보 불러오는 컨트롤러 작동");
         return "/members/myinfo";
     }
+
 
 }

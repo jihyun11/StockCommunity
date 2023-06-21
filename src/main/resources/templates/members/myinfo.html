@@ -50,8 +50,8 @@
 
   <form action="/members/myinfo" method="post">
     <h2>마이페이지</h2>
-    <input class="w3-input" type="text" id="username" name="username" th:value="${Info[0]}"><br>
-    <input class="w3-input" type="text" id="password" name="password" th:value="${Info[1]}"><br>
+    <input class="w3-input" type="text" id="username" name="username" th:value="${Info[0].username}"><br>
+    <input class="w3-input" type="text" id="password" name="password" th:value="${Info[0].password}"><br>
     <div class="submit">
       <input type="submit" value="완료">
     </div>

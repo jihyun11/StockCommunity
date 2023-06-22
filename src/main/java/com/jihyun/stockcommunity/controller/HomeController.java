@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -44,6 +45,12 @@ public class HomeController {
         StockCommunity stockCommunity1 = new StockCommunity();
         stockCommunity1.setUsername(stockCommunity.getUsername());
         stockCommunity1.setPassword(stockCommunity.getPassword());
+//        String ss = stockCommunity1.getInterests().toString();
+//        String[] interestsArray = stockCommunity1.getInterests().split(",");
+//        List<String> interestsList = Arrays.asList(interestsArray);
+
+        stockCommunity1.setInterests(stockCommunity1.getInterests());
+
 
         stockService.insertStock(stockCommunity1);
         System.out.println("회원가입 컨트롤러 작동");
@@ -112,7 +119,10 @@ public class HomeController {
     }
 
     @GetMapping("/members/modify")
-    public String modify() {
+    public String modify(HttpSession session, Model model) {
+        User loginUser = (User) session.getAttribute("first");
+        String usernameInfo = loginUser.getUsername();
+        model.addAttribute("usernameInfo", usernameInfo);
         return "/members/modify";
     }
 

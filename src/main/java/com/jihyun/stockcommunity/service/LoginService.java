@@ -26,4 +26,8 @@ public class LoginService {
     public List<User> myInfo() {
         return memberMapper.myinfo();
     }
+
+    public void updateMyInfo(String username, String password, String newpassword) {
+        memberMapper.updateMyInfo(username, password, newpassword);
+    }
 }

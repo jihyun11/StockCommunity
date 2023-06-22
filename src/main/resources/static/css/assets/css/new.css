@@ -14,6 +14,15 @@ li {
     list-style: none;
 }
 
+.checkbox-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkbox-row input[type="checkbox"] {
+    margin-right: 10px;
+}
+
 .wrap {
     width: 100%;
     height: 100vh;

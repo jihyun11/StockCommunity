@@ -23,8 +23,11 @@
     </select>
 
     <insert id="insertStock" parameterType="com.jihyun.stockcommunity.domain.StockCommunity">
-        INSERT INTO stockmember (username, password)
-        VALUES (#{username}, #{password})
+        INSERT INTO stockmember (username, password, interest)
+        VALUES (#{username}, #{password},
+        <foreach item="interest" collection="interests" separator=",">
+            #{interest}
+        </foreach>)
     </insert>
 
     <insert id="insertContentStock" parameterType="com.jihyun.stockcommunity.domain.ContentCommunity">

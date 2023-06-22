@@ -71,27 +71,31 @@ public class LoginController {
         return "redirect:/";
     }
 
-    @GetMapping("/members/myinfo")
-    public String myinfo() {
-        return "/members/myinfo";
-    }
 
-    @PostMapping("/members/myinfo")
+    @GetMapping("/members/myinfo")
     public String myinfo1(HttpSession session, Model model) {
         User loginUser = (User) session.getAttribute("first");
         List<User> myInfoList = loginService.myInfo();
         List<User> Info = new ArrayList<>();
+        String in = loginUser.getUsername();
 
+//        for(int i = 0; i < myInfoList.size(); i++) {
+//            if (myInfoList.get(i).getUsername().equals(loginUser.getUsername())) {
+//                Info.add(myInfoList.get(i));
+//                in = String.valueOf(myInfoList.get(i));
+//
+//            }
+//        }
 
-        for(int i = 0; i < myInfoList.size(); i++) {
-            if (myInfoList.get(i).getUsername().equals(loginUser.getUsername()) || myInfoList.get(i).getPassword().equals(loginUser.getPassword())) {
-                Info.add(myInfoList.get(i));
-
-            }
-        }
-
-        model.addAttribute("Info", Info);
+        model.addAttribute("myInfoUsername", in);
         System.out.println("내정보 불러오는 컨트롤러 작동");
+        return "/members/myinfo";
+    }
+
+    @PostMapping("/members/myinfo")
+    public String updateInfo(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("newpassword") String newpassword) {
+        loginService.updateMyInfo(username, password, newpassword);
+        System.out.println("내정보 수정하는 페이지 작동");
         return "/members/myinfo";
     }
 

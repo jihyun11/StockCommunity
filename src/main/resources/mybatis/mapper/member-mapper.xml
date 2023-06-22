@@ -18,5 +18,11 @@
             stockmember
     </select>
 
+    <update id="updateMyInfo" parameterType="com.jihyun.stockcommunity.domain.User">
+        UPDATE stockmember
+        SET password = #{newpassword}
+        WHERE username = #{username} AND password = #{password}
+    </update>
+
 
 </mapper>

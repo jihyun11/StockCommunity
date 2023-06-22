@@ -3,12 +3,19 @@ package com.jihyun.stockcommunity.domain;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 public class StockCommunity {
 
     private String username;
     private String password;
+
+//    private List<StockCommunity> interests;
+
+    private List<String> interests;
 
 
 
@@ -18,7 +25,8 @@ public class StockCommunity {
     }
     public StockCommunity() {
         this.username = username;
-        this.password = password; //혹시몰라 생성자도 추가해봄...
+        this.password = password;
+        //혹시몰라 생성자도 추가해봄...
 
 
 

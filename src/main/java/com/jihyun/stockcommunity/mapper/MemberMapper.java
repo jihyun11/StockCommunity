@@ -11,4 +11,6 @@ public interface MemberMapper {
     User login(String username, String password);
 
     List<User> myinfo();
+
+    void updateMyInfo(String username, String password, String newpassword);
 }

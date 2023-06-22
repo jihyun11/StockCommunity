@@ -28,7 +28,7 @@
 							<ul>
 								<li><a href="/members/new" class="glyphicon glyphicon-user"><span class="label">회원 가입</span></a></li>
 								<li><a href="/members/view" class="glyphicon glyphicon-menu-hamburger"><span class="label">회원목록 보기</span></a></li>
-								<li><a href="/members/modify" class="glyphicon glyphicon-refresh"><span class="label">회원정보 수정</span></a></li>
+								<li th:if="${session['first'] != null}"><a href="/members/modify" class="glyphicon glyphicon-refresh"><span class="label">회원정보 수정</span></a></li>
 								<li><a href="/members/bye" class="glyphicon glyphicon-trash"><span class="label">회원 탈퇴</span></a></li><br>
 								<br>
 								<li><a href="/members/content" class="glyphicon glyphicon-print"><span class="label">게시글 작성</span></a></li>
@@ -47,9 +47,6 @@
 									</a>
 
 								</li>
-								<a href="/members/myinfo" class="glyphicon glyphicon-menu-hamburger">
-									<span class="label">내정보</span>
-								</a>
 <!--								<li><a href="/members/login" class="glyphicon glyphicon-user"><span class="label">로그인</span></a></li>-->
 <!--								<li><a href="/members/logout" class="glyphicon glyphicon-trash"><span class="label">로그아웃</span></a></li><br>-->
 <!--								<br>-->

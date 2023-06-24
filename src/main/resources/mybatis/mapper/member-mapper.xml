@@ -4,7 +4,8 @@
     <select id="login" resultType="com.jihyun.stockcommunity.domain.User">
         SELECT
             username,
-            password
+            password,
+            interest
         FROM
             stockmember
         WHERE username = #{username} AND password = #{password}

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -48,8 +49,8 @@ public class HomeController {
 //        String ss = stockCommunity1.getInterests().toString();
 //        String[] interestsArray = stockCommunity1.getInterests().split(",");
 //        List<String> interestsList = Arrays.asList(interestsArray);
+        stockCommunity1.setInterests(stockCommunity.getInterests());
 
-        stockCommunity1.setInterests(stockCommunity1.getInterests());
 
 
         stockService.insertStock(stockCommunity1);
@@ -122,13 +123,20 @@ public class HomeController {
     public String modify(HttpSession session, Model model) {
         User loginUser = (User) session.getAttribute("first");
         String usernameInfo = loginUser.getUsername();
+
+        List<String> allInterests = Arrays.asList("정보공유", "친구만들기", "멤버십", "기타");
+
         model.addAttribute("usernameInfo", usernameInfo);
+
+        model.addAttribute("allInterests", allInterests);
+        model.addAttribute("interestList", loginUser.getInterestList());
         return "/members/modify";
     }
 
     @PostMapping("/members/modify")
-    public String newmodify(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("newpassword") String newpassword) {
-        stockService.updateStock(username, password, newpassword);
+    public String newmodify(@RequestParam("username") String username, @RequestParam("password") String password,
+                            @RequestParam("newpassword") String newpassword, @RequestParam("interests") String interests) {
+        stockService.updateStock(username, password, newpassword, interests);
         System.out.println("회원정보 수정 컨트롤러 작동");
         return "redirect:/";
     }

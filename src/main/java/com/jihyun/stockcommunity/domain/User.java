@@ -6,7 +6,9 @@ import lombok.ToString;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -15,21 +17,18 @@ public class User {
 
     private String username;
     private String password;
+    private String interest;
 
 
-    public String user(HttpSession session) {
-        User login = (User) session.getAttribute("first");
-        String myInfoUsername = login.getUsername();
-        String myInfoPassword = login.getPassword();
 
-        List<String> loginUser = new ArrayList<>();
-        loginUser.add(myInfoUsername);
-        loginUser.add(myInfoPassword);
 
-        return myInfoUsername;
+    public List<String> getInterestList() {
+        if (interest == null) {
+            return new ArrayList<>();
+        }
+        String[] split = interest.split(",");
+        return Arrays.stream(split).collect(Collectors.toList());
     }
-
-//    private List<String> loginUser;
 
 
 

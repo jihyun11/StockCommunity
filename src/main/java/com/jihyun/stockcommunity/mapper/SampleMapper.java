@@ -36,7 +36,7 @@ public interface SampleMapper {
 
 
     //수정
-    void updateStock(String username, String password, String newpassword);
+    void updateStock(String username, String password, String newpassword, String interests);
 
     void updateContentStock(String username, String newcontent, String newtitle);
 

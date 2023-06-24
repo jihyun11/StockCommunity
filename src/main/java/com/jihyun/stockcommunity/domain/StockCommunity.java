@@ -13,9 +13,12 @@ public class StockCommunity {
     private String username;
     private String password;
 
-//    private List<StockCommunity> interests;
+    private String interests;
 
-    private List<String> interests;
+
+
+
+
 
 
 

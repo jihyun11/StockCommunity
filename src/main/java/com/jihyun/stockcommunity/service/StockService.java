@@ -47,8 +47,8 @@ public class StockService {
         sampleMapper.deleteContentStock(username, title);
     }
 
-    public void updateStock(String username, String password, String newpassword) {
-        sampleMapper.updateStock(username, password, newpassword);
+    public void updateStock(String username, String password, String newpassword, String interests) {
+        sampleMapper.updateStock(username, password, newpassword, interests);
     }
 
     public void updateContentStock(String username, String newcontent, String newtitle) {

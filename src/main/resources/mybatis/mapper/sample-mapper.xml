@@ -24,10 +24,7 @@
 
     <insert id="insertStock" parameterType="com.jihyun.stockcommunity.domain.StockCommunity">
         INSERT INTO stockmember (username, password, interest)
-        VALUES (#{username}, #{password},
-        <foreach item="interest" collection="interests" separator=",">
-            #{interest}
-        </foreach>)
+        VALUES (#{username}, #{password}, #{interests})
     </insert>
 
     <insert id="insertContentStock" parameterType="com.jihyun.stockcommunity.domain.ContentCommunity">
@@ -47,7 +44,7 @@
 
     <update id="updateStock" parameterType="com.jihyun.stockcommunity.domain.StockCommunity">
         UPDATE stockmember
-        SET password = #{newpassword}
+        SET password = #{newpassword},interest = #{interests}
         WHERE username = #{username} AND password = #{password}
     </update>
 

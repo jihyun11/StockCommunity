@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jihyun.stockcommunity.mapper.ContentMapper">
+    <select id="contentListView" resultType="com.jihyun.stockcommunity.domain.ContentCommunity">
+        SELECT
+            title,
+            username
+        FROM
+            stockcontent
+    </select>
+</mapper>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+<div class="w3-padding w3-display-topmiddle">
+    <h2>게시글 목록</h2>
+    <table class="w3-table-all">
+        <thead>
+        <tr class="w3-green">
+            <th>제목</th><br>
+            <th>작성자</th><br>
+        </tr>
+        </thead>
+        <tr th:each="content : ${ContentList}">
+            <td th:text="${content.title}"></td>
+            <td th:text="${content.username}"></td>
+        </tr>
+    </table>
+</div>
+
+
+</body>
+</html>

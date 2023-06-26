@@ -13,15 +13,18 @@
         <tr class="w3-green">
             <th>제목</th><br>
             <th>작성자</th><br>
+            <th>내용</th><br>
         </tr>
         </thead>
-        <tr th:each="content : ${ContentList}">
-            <td><a th:href="@{/content/{title}(title=${content.title})}" th:text="${content.title}"></a></td>
-            <td th:text="${content.username}"></td>
+        <tr th:each="contentlist : ${ContentDetailView}">
+            <td th:text="${contentlist.title}"></td>
+            <td th:text="${contentlist.username}"></td>
+            <td th:text="${contentlist.content}"></td>
         </tr>
     </table>
     <br>
     <br>
+    <li><a href="/members/contentlist">뒤로 가기</a></li>
     <li><a href="/">홈으로</a></li>
 </div>
 

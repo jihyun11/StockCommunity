@@ -8,4 +8,14 @@
         FROM
             stockcontent
     </select>
+
+    <select id="contentDetailView" resultType="com.jihyun.stockcommunity.domain.ContentCommunity">
+        SELECT
+            title,
+            username,
+            content
+        FROM
+            stockcontent
+        WHERE title = #{title}
+    </select>
 </mapper>

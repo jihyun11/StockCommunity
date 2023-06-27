@@ -8,18 +8,24 @@
 <body>
 <div class="w3-padding w3-display-topmiddle">
   <h2>게시글 수정</h2>
+  <form action="/content/modify/{id}" method="post">
   <table class="w3-table-all">
     <thead>
     <tr class="w3-green">
+      <th>글번호</th><br>
       <th>제목</th><br>
       <th>작성자</th><br>
       <th>내용</th><br>
+
     </tr>
     </thead>
+
     <tr th:each="contentDetail : ${ContentDetailForView}">
-      <td><input type="text" th:value="${contentDetail.title}"></td>
-      <td><input type="text" th:value="${contentDetail.username}"  readonly></td>
-      <td><textarea th:text="${contentDetail.content}"></textarea></td>
+      <td><input type="text" id="contentId" name="contentId" th:value="${contentDetail.id}" readonly></td>
+      <td><input type="text" id="contentTitle" name="contentTitle" th:value="${contentDetail.title}"></td>
+      <td><input type="text" id="contentUsername" name="contentUsername" th:value="${contentDetail.username}" readonly></td>
+      <td><textarea id="contentContent" name="contentContent" th:text="${contentDetail.content}"></textarea></td>
+
 <!--      //for문 안돌리고 어떻게 하지...-->
 
     </tr>
@@ -28,7 +34,10 @@
   <br>
   <br>
 
-
+  <input type="submit" value="수정">
   <li><a href="/members/contentdetail">뒤로 가기</a></li>
   <li><a href="/">홈으로</a></li>
+  </form>
+
+
 </div>

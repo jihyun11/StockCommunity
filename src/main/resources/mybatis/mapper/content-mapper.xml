@@ -4,7 +4,9 @@
     <select id="contentListView" resultType="com.jihyun.stockcommunity.domain.ContentCommunity">
         SELECT
             title,
-            username
+            username,
+            id
+
         FROM
             stockcontent
     </select>
@@ -13,19 +15,34 @@
         SELECT
             title,
             username,
-            content
+            content,
+            id
         FROM
             stockcontent
-        WHERE title = #{title}
+        WHERE id = #{idValue}
     </select>
 
     <select id="contentDetailUpdateView" resultType="com.jihyun.stockcommunity.domain.ContentCommunity">
         SELECT
             title,
             username,
-            content
+            content,
+            id
+
         FROM
             stockcontent
-        WHERE title = #{id}
+        WHERE id = #{idValue}
     </select>
+
+    <update id="contentDetailUpdate" parameterType="com.jihyun.stockcommunity.domain.ContentCommunity">
+        UPDATE stockcontent
+        SET title = #{contentTitle}, content = #{contentContent}
+        WHERE username = #{contentUsername} AND id = #{contentId}
+    </update>
+
+    <delete id="contentDetailDelete" parameterType="com.jihyun.stockcommunity.domain.ContentCommunity">
+        DELETE FROM stockcontent
+        WHERE username = #{contentUsername} AND title = #{contentTitle} AND content = #{contentContent} AND
+              id = #{contentId}
+    </delete>
 </mapper>

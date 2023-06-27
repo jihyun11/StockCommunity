@@ -11,16 +11,19 @@
     <table class="w3-table-all">
         <thead>
         <tr class="w3-green">
+            <th>글번호</th><br>
             <th>제목</th><br>
             <th>작성자</th><br>
             <th>내용</th><br>
         </tr>
         </thead>
         <tr th:each="contentlist : ${ContentDetailView}">
+            <td th:text="${contentlist.id}"></td>
             <td th:text="${contentlist.title}"></td>
             <td th:text="${contentlist.username}"></td>
             <td th:text="${contentlist.content}"></td>
-            <td><a th:href="@{/content/modify/{id}(id=${contentlist.title})}">수정하기</a></td>
+            <td><a th:href="@{/content/modify/{idValue}(idValue=${contentlist.id})}">수정하기</a></td>
+            <td><a th:href="@{/content/delete/{idValue}(idValue=${contentlist.id})}">삭제하기</a></td>
         </tr>
 
     </table>

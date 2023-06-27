@@ -11,12 +11,14 @@
     <table class="w3-table-all">
         <thead>
         <tr class="w3-green">
+            <th>글번호</th><br>
             <th>제목</th><br>
             <th>작성자</th><br>
         </tr>
         </thead>
         <tr th:each="content : ${ContentList}">
-            <td><a th:href="@{/content/{title}(title=${content.title})}" th:text="${content.title}"></a></td>
+            <td th:text="${content.id}"></td>
+            <td><a th:href="@{/content/{idValue}(idValue=${content.id})}" th:text="${content.title}"></a></td>
             <td th:text="${content.username}"></td>
         </tr>
     </table>

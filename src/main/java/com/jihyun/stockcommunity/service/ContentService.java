@@ -20,11 +20,19 @@ public class ContentService {
         return contentMapper.contentListView();
     }
 
-    public List<ContentCommunity> getContentDetailView(String title) {
-        return contentMapper.contentDetailView(title);
+    public List<ContentCommunity> getContentDetailView(String idValue) {
+        return contentMapper.contentDetailView(idValue);
     }
 
-    public List<ContentCommunity> getContentDetailUpdateForView(String id) {
-        return contentMapper.contentDetailUpdateView(id);
+    public List<ContentCommunity> getContentDetailUpdateForView(String idValue) {
+        return contentMapper.contentDetailUpdateView(idValue);
+    }
+
+    public void updateContentDetail(String contentTitle, String contentContent, String contentUsername, int contentId) {
+        contentMapper.contentDetailUpdate(contentTitle, contentContent, contentUsername, contentId);
+    }
+
+    public void deleteContentDetail(String contentTitle, String contentContent, String contentUsername, int contentId) {
+        contentMapper.contentDetailDelete(contentTitle, contentContent, contentUsername, contentId);
     }
 }

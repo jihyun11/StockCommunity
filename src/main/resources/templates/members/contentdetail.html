@@ -20,10 +20,15 @@
             <td th:text="${contentlist.title}"></td>
             <td th:text="${contentlist.username}"></td>
             <td th:text="${contentlist.content}"></td>
+            <td><a th:href="@{/content/modify/{id}(id=${contentlist.title})}">수정하기</a></td>
         </tr>
+
     </table>
+
     <br>
     <br>
+
+
     <li><a href="/members/contentlist">뒤로 가기</a></li>
     <li><a href="/">홈으로</a></li>
 </div>

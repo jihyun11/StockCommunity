@@ -42,4 +42,12 @@ public class ContentController {
 
     }
 
+    @GetMapping("/content/modify/{id}")
+    public String contentview(@PathVariable("id") String id, Model model) {
+        List<ContentCommunity> ContentDetailForView = contentService.getContentDetailUpdateForView(id);
+        model.addAttribute("ContentDetailForView", ContentDetailForView);
+        System.out.println("게시글 상세페이지에서 수정 기능 컨트롤러");
+        return "/members/contentdetailupdate";
+    }
+
 }

@@ -18,4 +18,14 @@
             stockcontent
         WHERE title = #{title}
     </select>
+
+    <select id="contentDetailUpdateView" resultType="com.jihyun.stockcommunity.domain.ContentCommunity">
+        SELECT
+            title,
+            username,
+            content
+        FROM
+            stockcontent
+        WHERE title = #{id}
+    </select>
 </mapper>

@@ -12,4 +12,6 @@ public interface ContentMapper {
     List<ContentCommunity> contentListView();
 
     List<ContentCommunity> contentDetailView(String title);
+
+    List<ContentCommunity> contentDetailUpdateView(String id);
 }

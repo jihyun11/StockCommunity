@@ -23,4 +23,8 @@ public class ContentService {
     public List<ContentCommunity> getContentDetailView(String title) {
         return contentMapper.contentDetailView(title);
     }
+
+    public List<ContentCommunity> getContentDetailUpdateForView(String id) {
+        return contentMapper.contentDetailUpdateView(id);
+    }
 }

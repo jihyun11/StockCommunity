@@ -1,6 +1,7 @@
 package com.jihyun.stockcommunity.service;
 
 
+import com.jihyun.stockcommunity.domain.ContentCommunity;
 import com.jihyun.stockcommunity.domain.User;
 import com.jihyun.stockcommunity.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,9 @@ public class LoginService {
 
     public void updateMyInfo(String username, String password, String newpassword) {
         memberMapper.updateMyInfo(username, password, newpassword);
+    }
+
+    public List<ContentCommunity> updateMemberGrade(String username) {
+        return memberMapper.updateGrade(username);
     }
 }

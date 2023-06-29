@@ -53,6 +53,15 @@
     <input class="w3-input" type="text" id="username" name="username" th:value="${myInfoUsername}"><br>
     <input class="w3-input" type="text" id="password" name="password" placeholder="현재 비밀번호"><br>
     <input class="w3-input" type="text" id="newpassword" name="newpassword" placeholder="변경할 비밀번호"><br>
+    <input class="w3-input" type="text" id="grade" name="grade" th:if="${Info >= 3 ? '회원등급: 정회원' : '회원등급: 준회원'}"
+            readonly><br>
+
+<!--    <div th:if="${myInfoPostCount >= 10}">-->
+<!--      <span>회원등급: 정회원</span><br>-->
+<!--    </div>-->
+<!--    <div th:unless="${myInfoPostCount >= 10}">-->
+<!--      <span>회원등급: 준회원</span><br>-->
+<!--    </div>-->
     <div class="submit">
       <input type="submit" value="완료">
     </div>

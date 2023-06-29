@@ -3,6 +3,7 @@ package com.jihyun.stockcommunity.controller;
 import com.jihyun.stockcommunity.domain.ContentCommunity;
 import com.jihyun.stockcommunity.domain.StockCommunity;
 import com.jihyun.stockcommunity.domain.User;
+import com.jihyun.stockcommunity.service.LoginService;
 import com.jihyun.stockcommunity.service.StockService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -21,9 +21,11 @@ import java.util.List;
 public class HomeController {
 
     private final StockService stockService;
+    private final LoginService loginService;
 
-    public HomeController(StockService stockService) {
+    public HomeController(StockService stockService, LoginService loginService) {
         this.stockService = stockService;
+        this.loginService = loginService;
     }
 
     @GetMapping("/")
@@ -123,6 +125,10 @@ public class HomeController {
     public String modify(HttpSession session, Model model) {
         User loginUser = (User) session.getAttribute("first");
         String usernameInfo = loginUser.getUsername();
+        List<ContentCommunity> Info = loginService.updateMemberGrade(loginUser.getUsername());
+        int grade = (Info.size());
+        System.out.println(loginUser.getUsername() + "님의 게시글 수: " + grade);
+
 
         List<String> allInterests = Arrays.asList("정보공유", "친구만들기", "멤버십", "기타");
 
@@ -130,6 +136,7 @@ public class HomeController {
 
         model.addAttribute("allInterests", allInterests);
         model.addAttribute("interestList", loginUser.getInterestList());
+        model.addAttribute("Info", grade);
         return "/members/modify";
     }
 

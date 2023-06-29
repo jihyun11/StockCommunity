@@ -25,5 +25,12 @@
         WHERE username = #{username} AND password = #{password}
     </update>
 
+    <select id="updateGrade" resultType="com.jihyun.stockcommunity.domain.ContentCommunity">
+        SELECT
+            id
+        FROM stockcontent
+        WHERE username = #{username}
+    </select>
+
 
 </mapper>

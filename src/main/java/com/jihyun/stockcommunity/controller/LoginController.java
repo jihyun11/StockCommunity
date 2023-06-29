@@ -1,5 +1,6 @@
 package com.jihyun.stockcommunity.controller;
 
+import com.jihyun.stockcommunity.domain.ContentCommunity;
 import com.jihyun.stockcommunity.domain.User;
 import com.jihyun.stockcommunity.service.LoginService;
 import lombok.extern.slf4j.Slf4j;
@@ -76,18 +77,12 @@ public class LoginController {
     public String myinfo1(HttpSession session, Model model) {
         User loginUser = (User) session.getAttribute("first");
         List<User> myInfoList = loginService.myInfo();
-        List<User> Info = new ArrayList<>();
+        List<ContentCommunity> Info = loginService.updateMemberGrade(loginUser.getUsername());
         String in = loginUser.getUsername();
-
-//        for(int i = 0; i < myInfoList.size(); i++) {
-//            if (myInfoList.get(i).getUsername().equals(loginUser.getUsername())) {
-//                Info.add(myInfoList.get(i));
-//                in = String.valueOf(myInfoList.get(i));
-//
-//            }
-//        }
+        int grade = (Info.size());
 
         model.addAttribute("myInfoUsername", in);
+        model.addAttribute("Info", grade);
         System.out.println("내정보 불러오는 컨트롤러 작동");
         return "/members/myinfo";
     }

@@ -2,6 +2,7 @@ package com.jihyun.stockcommunity.controller;
 
 import com.jihyun.stockcommunity.domain.ContentCommunity;
 import com.jihyun.stockcommunity.domain.StockCommunity;
+import com.jihyun.stockcommunity.domain.User;
 import com.jihyun.stockcommunity.service.ContentService;
 import com.jihyun.stockcommunity.service.StockService;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -36,8 +38,12 @@ public class ContentController {
     }
 
     @GetMapping("/content/{idValue}")
-    public String content(@PathVariable("idValue") String idValue, Model model) {
+    public String content(@PathVariable("idValue") String idValue, Model model, HttpSession httpsession) {
         List<ContentCommunity> ContentDetailView = contentService.getContentDetailView(idValue);
+        User session = (User) httpsession.getAttribute("first");
+        String s = session.getUsername();
+
+        model.addAttribute("comment_author", s);
         model.addAttribute("ContentDetailView", ContentDetailView);
         System.out.println("게시글 상세페이지 조회 기능 컨트롤러 작동");
         return "/members/contentdetail";

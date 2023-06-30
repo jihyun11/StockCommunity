@@ -34,8 +34,12 @@
     <br>
 
 
+    <Form action="/content/{idValue}" method="post">
+        <textarea class="comment-textarea" name="comment_content" rows="2" placeholder="댓글을 입력하세요..."></textarea>
+        <input type="text" name= "comment_author" th:value="${comment_author}" readonly></input><br>
+        <input type="submit" value="전송">
 
-    <textarea class="comment-textarea" name="comment" rows="4" placeholder="댓글을 입력하세요..."></textarea>
+    </Form>
 
     <li><a href="/members/contentlist">뒤로 가기</a></li>
     <li><a href="/">홈으로</a></li>

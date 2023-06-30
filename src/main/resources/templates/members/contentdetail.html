@@ -22,8 +22,10 @@
             <td th:text="${contentlist.title}"></td>
             <td th:text="${contentlist.username}"></td>
             <td th:text="${contentlist.content}"></td>
-            <td><a th:href="@{/content/modify/{idValue}(idValue=${contentlist.id})}">수정하기</a></td>
-            <td><a th:href="@{/content/delete/{idValue}(idValue=${contentlist.id})}">삭제하기</a></td>
+            <td>
+                <a th:href="@{/content/modify/{idValue}(idValue=${contentlist.id})}">수정하기</a><br>
+                <a th:href="@{/content/delete/{idValue}(idValue=${contentlist.id})}">삭제하기</a>
+            </td>
         </tr>
 
     </table>
@@ -31,6 +33,9 @@
     <br>
     <br>
 
+
+
+    <textarea class="comment-textarea" name="comment" rows="4" placeholder="댓글을 입력하세요..."></textarea>
 
     <li><a href="/members/contentlist">뒤로 가기</a></li>
     <li><a href="/">홈으로</a></li>

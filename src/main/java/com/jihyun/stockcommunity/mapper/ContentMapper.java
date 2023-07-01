@@ -11,7 +11,7 @@ public interface ContentMapper {
 
     List<ContentCommunity> contentListView();
 
-    List<ContentCommunity> contentDetailView(String idValue);
+    ContentCommunity contentDetailView(String idValue);
 
     List<ContentCommunity> contentDetailUpdateView(String idValue);
 

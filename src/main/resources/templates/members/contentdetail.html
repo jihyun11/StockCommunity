@@ -17,21 +17,23 @@
             <th>내용</th><br>
         </tr>
         </thead>
-        <tr th:each="contentlist : ${ContentDetailView}">
-            <td th:text="${contentlist.id}"></td>
-            <td th:text="${contentlist.title}"></td>
-            <td th:text="${contentlist.username}"></td>
-            <td th:text="${contentlist.content}"></td>
-            <td>
-                <a th:href="@{/content/modify/{idValue}(idValue=${contentlist.id})}">수정하기</a><br>
-                <a th:href="@{/content/delete/{idValue}(idValue=${contentlist.id})}">삭제하기</a>
-            </td>
+        <tr>
+            <td th:text="${contentDetailView.id}"></td>
+            <td th:text="${contentDetailView.title}"></td>
+            <td th:text="${contentDetailView.username}"></td>
+            <td th:text="${contentDetailView.content}"></td>
+
         </tr>
 
     </table>
 
     <br>
     <br>
+
+
+    <a th:href="@{/content/modify/{idValue}(idValue=${contentDetailView.id})}">수정하기</a><br>
+    <a th:href="@{/content/delete/{idValue}(idValue=${contentDetailView.id})}">삭제하기</a>
+
 
 
     <Form action="/content/{idValue}" method="post">

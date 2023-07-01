@@ -20,7 +20,7 @@ public class ContentService {
         return contentMapper.contentListView();
     }
 
-    public List<ContentCommunity> getContentDetailView(String idValue) {
+    public ContentCommunity getContentDetailView(String idValue) {
         return contentMapper.contentDetailView(idValue);
     }
 

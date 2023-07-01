@@ -39,12 +39,12 @@ public class ContentController {
 
     @GetMapping("/content/{idValue}")
     public String content(@PathVariable("idValue") String idValue, Model model, HttpSession httpsession) {
-        List<ContentCommunity> ContentDetailView = contentService.getContentDetailView(idValue);
+        ContentCommunity contentDetailView = contentService.getContentDetailView(idValue);
         User session = (User) httpsession.getAttribute("first");
         String s = session.getUsername();
 
         model.addAttribute("comment_author", s);
-        model.addAttribute("ContentDetailView", ContentDetailView);
+        model.addAttribute("contentDetailView", contentDetailView);
         System.out.println("게시글 상세페이지 조회 기능 컨트롤러 작동");
         return "/members/contentdetail";
 

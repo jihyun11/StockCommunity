@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.servlet.http.HttpSession;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @ToString
-public class User {
+public class User implements Serializable {
 
     private String username;
     private String password;

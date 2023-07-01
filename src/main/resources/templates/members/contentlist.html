@@ -16,7 +16,7 @@
             <th>작성자</th><br>
         </tr>
         </thead>
-        <tr th:each="content : ${ContentList}">
+        <tr th:each="content : ${contentList}">
             <td th:text="${content.id}"></td>
             <td><a th:href="@{/content/{idValue}(idValue=${content.id})}" th:text="${content.title}"></a></td>
             <td th:text="${content.username}"></td>

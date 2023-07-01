@@ -36,16 +36,47 @@
 
 
 
-    <Form action="/content/{idValue}" method="post">
-        <textarea class="comment-textarea" name="comment_content" rows="2" placeholder="댓글을 입력하세요..."></textarea>
-        <input type="text" name= "comment_author" th:value="${comment_author}" readonly></input><br>
+    <form th:action="@{/content/{idValue}(idValue=${contentDetailView.id})}" method="post">
+        <textarea class="comment-textarea" name="commentContent" rows="2" placeholder="댓글을 입력하세요..."></textarea>
+        <input type="text" name="commentAuthor" th:value="${commentAuthor}" readonly></input><br>
         <input type="submit" value="전송">
 
-    </Form>
+    </form>
 
     <li><a href="/members/contentlist">뒤로 가기</a></li>
     <li><a href="/">홈으로</a></li>
+
+    <br>
+    <br>
+
+<!--댓글 보여주는공간-->
+
+    <table class="w3-table-all">
+        <thead>
+        <tr class="w3-blue">
+            <th>댓글번호</th><br>
+            <th>내용</th><br>
+            <th>작성자</th><br>
+            <th>작성시간</th><br>
+
+        </tr>
+        </thead>
+
+        <tr>
+            <td><input type="text" id="commentId" name="commentSelectId"  readonly></td>
+            <td><textarea id="commentContent" name="commentSelectContent"></textarea></td>
+            <td><input type="text" id="commentAuthor" name="commentSelectAuthor"readonly></td>
+            <td><input type="text" id="commentDate" name="commentSelectDate"></td>
+
+            <!--      //for문 안돌리고 어떻게 하지...th:value="${comment.commentId}"-->
+
+        </tr>
+
+    </table>
 </div>
+
+
+
 
 
 </body>

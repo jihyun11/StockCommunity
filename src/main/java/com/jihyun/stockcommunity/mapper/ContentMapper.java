@@ -1,7 +1,6 @@
 package com.jihyun.stockcommunity.mapper;
 
 import com.jihyun.stockcommunity.domain.ContentCommunity;
-import com.jihyun.stockcommunity.domain.StockCommunity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -13,7 +12,7 @@ public interface ContentMapper {
 
     ContentCommunity contentDetailView(String idValue);
 
-    List<ContentCommunity> contentDetailUpdateView(String idValue);
+    ContentCommunity contentDetailUpdateView(String idValue);
 
     void contentDetailUpdate(String contentTitle, String contentContent, String contentUsername, int contentId);
 

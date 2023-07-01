@@ -3,6 +3,8 @@
 <mapper namespace="com.jihyun.stockcommunity.mapper.CommentMapper">
     <insert id="insertComment" parameterType="com.jihyun.stockcommunity.domain.Comment">
         INSERT INTO stockcomment (comment_content, comment_author)
-        values (#{comment_content}, #{comment_author})
+        values (#{commentContent}, #{commentAuthor})
     </insert>
+
+
 </mapper>

@@ -1,5 +1,6 @@
 package com.jihyun.stockcommunity.controller;
 
+import com.jihyun.stockcommunity.constant.Constant;
 import com.jihyun.stockcommunity.domain.ContentCommunity;
 import com.jihyun.stockcommunity.domain.StockCommunity;
 import com.jihyun.stockcommunity.domain.User;
@@ -30,7 +31,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String ladybug(HttpSession httpSession) {
-        Object first = httpSession.getAttribute("first");
+        Object first = httpSession.getAttribute(Constant.USER_SESSION_KEY);
         if (first != null) {
             User user = (User) first;
             log.info("{}", user);
@@ -48,9 +49,6 @@ public class HomeController {
         StockCommunity stockCommunity1 = new StockCommunity();
         stockCommunity1.setUsername(stockCommunity.getUsername());
         stockCommunity1.setPassword(stockCommunity.getPassword());
-//        String ss = stockCommunity1.getInterests().toString();
-//        String[] interestsArray = stockCommunity1.getInterests().split(",");
-//        List<String> interestsList = Arrays.asList(interestsArray);
         stockCommunity1.setInterests(stockCommunity.getInterests());
 
 
@@ -123,10 +121,10 @@ public class HomeController {
 
     @GetMapping("/members/modify")
     public String modify(HttpSession session, Model model) {
-        User loginUser = (User) session.getAttribute("first");
+        User loginUser = (User) session.getAttribute(Constant.USER_SESSION_KEY);
         String usernameInfo = loginUser.getUsername();
-        List<ContentCommunity> Info = loginService.updateMemberGrade(loginUser.getUsername());
-        int grade = (Info.size());
+        List<ContentCommunity> info = loginService.updateMemberGrade(loginUser.getUsername());
+        int grade = (info.size());
         System.out.println(loginUser.getUsername() + "님의 게시글 수: " + grade);
 
 
@@ -136,7 +134,7 @@ public class HomeController {
 
         model.addAttribute("allInterests", allInterests);
         model.addAttribute("interestList", loginUser.getInterestList());
-        model.addAttribute("Info", grade);
+        model.addAttribute("info", grade);
         return "/members/modify";
     }
 

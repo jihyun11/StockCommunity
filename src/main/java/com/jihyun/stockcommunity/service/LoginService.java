@@ -20,8 +20,8 @@ public class LoginService {
     }
 
     public User loginSession(String username, String password) {
-        User loginUser = memberMapper.login(username, password);
-        return loginUser;
+        return memberMapper.login(username, password);
+
     }
 
     public List<User> myInfo() {

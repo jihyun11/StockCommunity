@@ -9,9 +9,9 @@ import java.util.Date;
 @Setter
 public class Comment {
 
-    private String comment_author;
-    private String comment_content;
-    private Date comment_date; //date 타입도 됨?
+    private String commentAuthor;
+    private String commentContent;
+    private Date commentDate; //date 타입도 됨?
 
-    private int comment_id;
+    private int commentId;
 }

@@ -1,7 +1,6 @@
 package com.jihyun.stockcommunity.mapper;
 
 import com.jihyun.stockcommunity.domain.ContentCommunity;
-import com.jihyun.stockcommunity.domain.StockCommunity;
 import com.jihyun.stockcommunity.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 

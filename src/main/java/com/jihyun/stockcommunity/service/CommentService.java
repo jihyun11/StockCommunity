@@ -1,7 +1,10 @@
 package com.jihyun.stockcommunity.service;
 
+import com.jihyun.stockcommunity.domain.Comment;
 import com.jihyun.stockcommunity.mapper.CommentMapper;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CommentService {
@@ -12,7 +15,8 @@ public class CommentService {
         this.commentMapper = commentMapper;
     }
 
-    public void comment(String comment_content, String comment_author) {
-        commentMapper.insertComment(comment_content, comment_author);
+    public void comment(String commentContent, String commentAuthor) {
+        commentMapper.insertComment(commentContent, commentAuthor);
     }
+
 }

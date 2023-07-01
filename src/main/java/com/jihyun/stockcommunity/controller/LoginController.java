@@ -1,5 +1,6 @@
 package com.jihyun.stockcommunity.controller;
 
+import com.jihyun.stockcommunity.constant.Constant;
 import com.jihyun.stockcommunity.domain.ContentCommunity;
 import com.jihyun.stockcommunity.domain.User;
 import com.jihyun.stockcommunity.service.LoginService;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -40,7 +40,7 @@ public class LoginController {
         if(loginUser == null) {
             return "redirect:/members/loginFail";
         }
-        httpSession.setAttribute("first", loginUser);
+        httpSession.setAttribute(Constant.USER_SESSION_KEY, loginUser);
         log.info("{}, {}", loginUser.getUsername(), loginUser.getPassword());
         System.out.println("로그인 기능 컨트롤러 작동");
         return "redirect:/";
@@ -58,7 +58,7 @@ public class LoginController {
 
     @PostMapping("/members/logout")
     public String logout(HttpServletRequest request, HttpSession session) {
-        User loginUser = (User) session.getAttribute("first");
+        User loginUser = (User) session.getAttribute(Constant.USER_SESSION_KEY);
         if (loginUser != null) {
             String nowUsername = loginUser.getUsername();
             String nowPassword = loginUser.getPassword();
@@ -75,14 +75,13 @@ public class LoginController {
 
     @GetMapping("/members/myinfo")
     public String myinfo1(HttpSession session, Model model) {
-        User loginUser = (User) session.getAttribute("first");
-        List<User> myInfoList = loginService.myInfo();
-        List<ContentCommunity> Info = loginService.updateMemberGrade(loginUser.getUsername());
+        User loginUser = (User) session.getAttribute(Constant.USER_SESSION_KEY);
+        List<ContentCommunity> info = loginService.updateMemberGrade(loginUser.getUsername());
         String in = loginUser.getUsername();
-        int grade = (Info.size());
+        int grade = (info.size());
 
         model.addAttribute("myInfoUsername", in);
-        model.addAttribute("Info", grade);
+        model.addAttribute("info", grade);
         System.out.println("내정보 불러오는 컨트롤러 작동");
         return "/members/myinfo";
     }

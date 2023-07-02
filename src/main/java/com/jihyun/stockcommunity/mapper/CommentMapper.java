@@ -7,6 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface CommentMapper {
-    void insertComment(String commentContent, String commentAuthor);
+    void insertComment(String commentContent, String commentAuthor, int commentContentId);
+
 
 }

@@ -15,8 +15,8 @@ public class CommentService {
         this.commentMapper = commentMapper;
     }
 
-    public void comment(String commentContent, String commentAuthor) {
-        commentMapper.insertComment(commentContent, commentAuthor);
+    public void comment(String commentContent, String commentAuthor, int commentContentId) {
+        commentMapper.insertComment(commentContent, commentAuthor, commentContentId);
     }
 
 }

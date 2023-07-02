@@ -39,6 +39,7 @@
     <form th:action="@{/content/{idValue}(idValue=${contentDetailView.id})}" method="post">
         <textarea class="comment-textarea" name="commentContent" rows="2" placeholder="댓글을 입력하세요..."></textarea>
         <input type="text" name="commentAuthor" th:value="${commentAuthor}" readonly></input><br>
+        <input type="text" name="commentContentId" th:value="${contentDetailView.id}" readonly>
         <input type="submit" value="전송">
 
     </form>

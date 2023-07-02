@@ -22,8 +22,10 @@ public class CommentController {
 
     @PostMapping("/content/{idValue}")
     public String comment(@RequestParam("commentContent") String commentContent, @RequestParam("commentAuthor")
-                          String commentAuthor, @PathVariable("idValue") String idValue) {
-        commentService.comment(commentContent, commentAuthor);
+                          String commentAuthor, @RequestParam("commentContentId") int commentContentId,
+                          @PathVariable("idValue") String idValue) {
+//        commentContentId = Integer.parseInt(idValue);
+        commentService.comment(commentContent, commentAuthor, commentContentId);
         log.info("댓글 작성자와 내용: {}, {}", commentAuthor, commentContent);
         log.info("댓글 작성 컨트롤러 작동");
         log.info(idValue);

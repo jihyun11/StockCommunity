@@ -14,4 +14,5 @@ public class Comment {
     private Date commentDate; //date 타입도 됨?
 
     private int commentId;
+    private int commentContentId;
 }

@@ -5,14 +5,15 @@
         INSERT INTO stockcomment (comment_content, comment_author, comment_content_id)
         values (#{commentContent}, #{commentAuthor}, #{commentContentId})
     </insert>
+<!--    인서트문은 왜 컬럼명이랑 도메인의 필드명이랑 같지 않아도 되는거??-->
 
     <select id="selectComment" resultType="com.jihyun.stockcommunity.domain.SelectComment">
         SELECT
-            comment_id,
-            comment_content,
-            comment_author,
-            comment_date,
-            comment_content_id
+            comment_id as commentSelectId,
+            comment_content as commentSelectContent,
+            comment_author as commentSelectAuthor,
+            comment_date as commentSelectDate,
+            comment_content_id as commentSelectContentId
         FROM
             stockcomment
         WHERE comment_content_id = #{idValue}

@@ -3,6 +3,7 @@ package com.jihyun.stockcommunity.controller;
 import com.jihyun.stockcommunity.constant.Constant;
 import com.jihyun.stockcommunity.domain.Comment;
 import com.jihyun.stockcommunity.domain.ContentCommunity;
+import com.jihyun.stockcommunity.domain.SelectComment;
 import com.jihyun.stockcommunity.domain.User;
 import com.jihyun.stockcommunity.service.CommentService;
 import com.jihyun.stockcommunity.service.ContentService;
@@ -44,10 +45,15 @@ public class ContentController {
         ContentCommunity contentDetailView = contentService.getContentDetailView(idValue);
         User session = (User) httpsession.getAttribute(Constant.USER_SESSION_KEY);
         String s = session.getUsername();
+        List<SelectComment> selectComment = commentService.selectComment(idValue);
 
         model.addAttribute("commentAuthor", s);
         model.addAttribute("contentDetailView", contentDetailView);
+        model.addAttribute("selectComment", selectComment);
+
+
         log.info("게시글 상세페이지와 댓글 조회 기능 컨트롤러 작동");
+
         return "/members/contentdetail";
 
     }

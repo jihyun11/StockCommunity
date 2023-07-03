@@ -1,7 +1,9 @@
 package com.jihyun.stockcommunity.service;
 
 import com.jihyun.stockcommunity.domain.Comment;
+import com.jihyun.stockcommunity.domain.SelectComment;
 import com.jihyun.stockcommunity.mapper.CommentMapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +19,10 @@ public class CommentService {
 
     public void comment(String commentContent, String commentAuthor, int commentContentId) {
         commentMapper.insertComment(commentContent, commentAuthor, commentContentId);
+    }
+
+    public List<SelectComment> selectComment(String idValue) {
+        return commentMapper.selectComment(idValue);
     }
 
 }

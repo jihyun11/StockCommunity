@@ -8,6 +8,7 @@
 <body>
 <div class="w3-padding w3-display-topmiddle">
     <h2>게시글 목록</h2>
+
     <table class="w3-table-all">
         <thead>
         <tr class="w3-green">
@@ -33,16 +34,18 @@
 
     <a th:href="@{/content/modify/{idValue}(idValue=${contentDetailView.id})}">수정하기</a><br>
     <a th:href="@{/content/delete/{idValue}(idValue=${contentDetailView.id})}">삭제하기</a>
+    <br>
 
-
-
+    <h3>댓글창</h3>
     <form th:action="@{/content/{idValue}(idValue=${contentDetailView.id})}" method="post">
         <textarea class="comment-textarea" name="commentContent" rows="2" placeholder="댓글을 입력하세요..."></textarea>
         <input type="text" name="commentAuthor" th:value="${commentAuthor}" readonly></input><br>
         <input type="text" name="commentContentId" th:value="${contentDetailView.id}" readonly>
         <input type="submit" value="전송">
-
     </form>
+
+    <br>
+    <br>
 
     <li><a href="/members/contentlist">뒤로 가기</a></li>
     <li><a href="/">홈으로</a></li>
@@ -50,8 +53,9 @@
     <br>
     <br>
 
-<!--댓글 보여주는공간-->
 
+<!--댓글 보여주는공간-->
+    <h3>댓글</h3>
     <table class="w3-table-all">
         <thead>
         <tr class="w3-blue">
@@ -59,21 +63,23 @@
             <th>내용</th><br>
             <th>작성자</th><br>
             <th>작성시간</th><br>
+            <th>글작성번호</th><br>
 
         </tr>
         </thead>
 
-        <tr>
-            <td><input type="text" id="commentId" name="commentSelectId"  readonly></td>
-            <td><textarea id="commentContent" name="commentSelectContent"></textarea></td>
-            <td><input type="text" id="commentAuthor" name="commentSelectAuthor"readonly></td>
-            <td><input type="text" id="commentDate" name="commentSelectDate"></td>
-
-            <!--      //for문 안돌리고 어떻게 하지...th:value="${comment.commentId}"-->
-
+        <tr th:each="sc : ${selectComment}">
+            <td th:text="${sc.commentSelectId}"></td>
+            <td th:text="${sc.commentSelectContent}"></td>
+            <td th:text="${sc.commentSelectAuthor}" ></td>
+            <td th:date="${sc.commentSelectDate}"></td>
+<!--            <td><input type="text" id="commentContentId" name="commentContentId" th:value="${contentDetailView.id}" readonly></td>-->
+            <td th:text="${sc.commentSelectContentId}"></td>
         </tr>
 
     </table>
+
+
 </div>
 
 

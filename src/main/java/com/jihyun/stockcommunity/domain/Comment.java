@@ -9,10 +9,12 @@ import java.util.Date;
 @Setter
 public class Comment {
 
+
     private String commentAuthor;
     private String commentContent;
-    private Date commentDate; //date 타입도 됨?
-
+    private Date commentDate;
     private int commentId;
     private int commentContentId;
+
+
 }

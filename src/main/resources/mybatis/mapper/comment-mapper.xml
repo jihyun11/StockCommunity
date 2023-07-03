@@ -6,6 +6,18 @@
         values (#{commentContent}, #{commentAuthor}, #{commentContentId})
     </insert>
 
+    <select id="selectComment" resultType="com.jihyun.stockcommunity.domain.SelectComment">
+        SELECT
+            comment_id,
+            comment_content,
+            comment_author,
+            comment_date,
+            comment_content_id
+        FROM
+            stockcomment
+        WHERE comment_content_id = #{idValue}
+    </select>
+
 
 
 

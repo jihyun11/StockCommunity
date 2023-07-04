@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+<form action="/comment/modify/{commentIdValue}" method="post">
+<div class="w3-padding w3-display-topmiddle">
+    <h2>댓글 수정</h2>
+
+        <table class="w3-table-all">
+            <thead>
+            <tr class="w3-green">
+                <th>댓글번호</th><br>
+                <th>내용</th><br>
+                <th>작성자</th><br>
+                <th>작성시간</th><br>
+                <th>글작성번호</th><br>
+
+            </tr>
+            </thead>
+
+            <tr>
+                <td><input type="text" name="commentSelectId" th:value="${selectCommentUpdate.commentSelectId}" readonly></td>
+                <td><textarea type="text" name="commentSelectContent" th:value="${selectCommentUpdate.commentSelectContent}"></textarea></td>
+                <td><input type="text" name="commentSelectAuthor" th:value="${selectCommentUpdate.commentSelectAuthor}" readonly></td>
+                <td><input name="commentSelectDate" th:text="${selectCommentUpdate.commentSelectDate}"></input></td>
+                <td><input type="text" name="commentSelectContentId" th:value="${selectCommentUpdate.commentSelectContentId}"></td>
+
+                <!--      //for문 안돌리고 어떻게 하지...-->
+
+            </tr>
+
+        </table>
+        <br>
+        <br>
+
+<!--        <input type="submit" value="수정">-->
+<!--        <li><a th:href="@{/comment/modify/{commentIdValue}(commentIdValue=${selectCommentUpdate.commentSelectId})}">뒤로 가기</a></li>-->
+        <li><a href="/">홈으로</a></li>
+
+
+
+
+
+
+</div>
+</form>

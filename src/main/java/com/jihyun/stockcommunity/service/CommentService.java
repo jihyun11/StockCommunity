@@ -25,4 +25,8 @@ public class CommentService {
         return commentMapper.selectComment(idValue);
     }
 
+    public SelectComment selectCommentUpdate(String commentIdValue) {
+        return commentMapper.selectCommentUpdate(commentIdValue);
+    }
+
 }

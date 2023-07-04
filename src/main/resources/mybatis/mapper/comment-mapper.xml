@@ -19,6 +19,18 @@
         WHERE comment_content_id = #{idValue}
     </select>
 
+    <select id="selectCommentUpdate" resultType="com.jihyun.stockcommunity.domain.SelectComment">
+        SELECT
+            comment_id as commentSelectId,
+            comment_content as commentSelectContent,
+            comment_author as commentSelectAuthor,
+            comment_date as commentSelectDate,
+            comment_content_id as commentSelectContentId
+        FROM
+            stockcomment
+        WHERE comment_content_id = #{commentIdValue}
+    </select>
+
 
 
 

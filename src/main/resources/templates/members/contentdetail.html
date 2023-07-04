@@ -64,20 +64,25 @@
             <th>작성자</th><br>
             <th>작성시간</th><br>
             <th>글작성번호</th><br>
+            <th>수정하기</th><br>
 
         </tr>
         </thead>
 
         <tr th:each="sc : ${selectComment}">
+
+
             <td th:text="${sc.commentSelectId}"></td>
             <td th:text="${sc.commentSelectContent}"></td>
             <td th:text="${sc.commentSelectAuthor}" ></td>
             <td th:text="${sc.commentSelectDate}"></td>
-<!--            <td><input type="text" id="commentContentId" name="commentContentId" th:value="${contentDetailView.id}" readonly></td>-->
             <td th:text="${sc.commentSelectContentId}"></td>
+            <td><a th:href="@{/comment/modify/{commentIdValue}(commentIdValue=${sc.commentSelectId})}">댓글 수정하기</a></td>
+
         </tr>
 
     </table>
+
 
 
 </div>

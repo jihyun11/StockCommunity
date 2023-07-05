@@ -42,7 +42,7 @@ public class LoginController {
         }
         httpSession.setAttribute(Constant.USER_SESSION_KEY, loginUser);
         log.info("{}, {}", loginUser.getUsername(), loginUser.getPassword());
-        System.out.println("로그인 기능 컨트롤러 작동");
+        log.info("로그인 기능 컨트롤러 작동");
         return "redirect:/";
     }
 
@@ -67,7 +67,7 @@ public class LoginController {
 
         session.invalidate();
 
-        System.out.println("로그아웃 기능 컨트롤러 작동");
+        log.info("로그아웃 기능 컨트롤러 작동");
 
         return "redirect:/";
     }
@@ -82,14 +82,14 @@ public class LoginController {
 
         model.addAttribute("myInfoUsername", in);
         model.addAttribute("info", grade);
-        System.out.println("내정보 불러오는 컨트롤러 작동");
+        log.info("내정보 불러오는 컨트롤러 작동");
         return "/members/myinfo";
     }
 
     @PostMapping("/members/myinfo")
     public String updateInfo(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("newpassword") String newpassword) {
         loginService.updateMyInfo(username, password, newpassword);
-        System.out.println("내정보 수정하는 페이지 작동");
+        log.info("내정보 수정하는 페이지 작동");
         return "/members/myinfo";
     }
 

@@ -65,6 +65,8 @@
             <th>작성시간</th><br>
             <th>글작성번호</th><br>
             <th>수정하기</th><br>
+            <th>삭제하기</th><br>
+            <th>좋아요</th><br>
 
         </tr>
         </thead>
@@ -78,6 +80,8 @@
             <td th:text="${sc.commentSelectDate}"></td>
             <td th:text="${sc.commentSelectContentId}"></td>
             <td><a th:href="@{/comment/modify/{commentIdValue}(commentIdValue=${sc.commentSelectId})}">댓글 수정하기</a></td>
+            <td><a th:href="@{/comment/delete/{commentIdValue}(commentIdValue=${sc.commentSelectId})}">댓글 삭제하기</a></td>
+            <td><button name="like">좋아요</button></td>
 
         </tr>
 

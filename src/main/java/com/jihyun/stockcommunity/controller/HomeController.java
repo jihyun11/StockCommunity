@@ -2,8 +2,10 @@ package com.jihyun.stockcommunity.controller;
 
 import com.jihyun.stockcommunity.constant.Constant;
 import com.jihyun.stockcommunity.domain.ContentCommunity;
+import com.jihyun.stockcommunity.domain.SelectComment;
 import com.jihyun.stockcommunity.domain.StockCommunity;
 import com.jihyun.stockcommunity.domain.User;
+import com.jihyun.stockcommunity.service.CommentService;
 import com.jihyun.stockcommunity.service.LoginService;
 import com.jihyun.stockcommunity.service.StockService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,9 +26,12 @@ public class HomeController {
     private final StockService stockService;
     private final LoginService loginService;
 
-    public HomeController(StockService stockService, LoginService loginService) {
+    private final CommentService commentService;
+
+    public HomeController(StockService stockService, LoginService loginService, CommentService commentService) {
         this.stockService = stockService;
         this.loginService = loginService;
+        this.commentService = commentService;
     }
 
     @GetMapping("/")
@@ -54,7 +59,7 @@ public class HomeController {
 
 
         stockService.insertStock(stockCommunity1);
-        System.out.println("회원가입 컨트롤러 작동");
+        log.info("회원가입 컨트롤러 작동");
         return "redirect:/";
     }
 
@@ -72,7 +77,7 @@ public class HomeController {
 
         stockService.insertContentStock(contentCommunity1);
 
-        System.out.println("게시글 등록 컨트롤러 작동");
+        log.info("게시글 등록 컨트롤러 작동");
 
         return "redirect:/";
     }
@@ -80,7 +85,7 @@ public class HomeController {
     public String view(Model model) {
             List<StockCommunity> stockList = stockService.getStockList();
             model.addAttribute("stockList", stockList);
-            System.out.println("회원목록 조회 기능 컨트롤러 작동");
+            log.info("회원목록 조회 기능 컨트롤러 작동");
             return "/members/view";
 
     }
@@ -89,7 +94,7 @@ public class HomeController {
     public String contentview(Model model) {
         List<ContentCommunity> stockContentList = stockService.getContentStockList();
         model.addAttribute("stockContentList", stockContentList);
-        System.out.println("게시글목록 조회 기능 컨트롤러 작동");
+        log.info("게시글목록 조회 기능 컨트롤러 작동");
         return "/members/contentview";
     }
 
@@ -102,7 +107,7 @@ public class HomeController {
     @PostMapping("/members/bye")
     public String byeview(@RequestParam("username") String username, @RequestParam("password") String password) {
         stockService.deleteStockMember(username, password);
-        System.out.println("회원정보 삭제 컨트롤러 작동");
+        log.info("회원정보 삭제 컨트롤러 작동");
         return "redirect:/";
     }
 
@@ -115,7 +120,7 @@ public class HomeController {
     public String byecontent(@RequestParam("username") String username, @RequestParam("title") String title) {
         //requestparam 괄호 안에 글자랑 똑같은 컬럼을 찾는 거임
         stockService.deleteStockContent(username, title);
-        System.out.println("게시글 삭제 컨트롤러 작동");
+        log.info("게시글 삭제 컨트롤러 작동");
         return "redirect:/";
     }
 
@@ -124,8 +129,11 @@ public class HomeController {
         User loginUser = (User) session.getAttribute(Constant.USER_SESSION_KEY);
         String usernameInfo = loginUser.getUsername();
         List<ContentCommunity> info = loginService.updateMemberGrade(loginUser.getUsername());
+        List<SelectComment> commentInfo = commentService.selectCommentGrade(loginUser.getUsername());
         int grade = (info.size());
-        System.out.println(loginUser.getUsername() + "님의 게시글 수: " + grade);
+        int commentGrade = (commentInfo.size());
+        log.info("{}님의 게시글 수: {}, 댓글 수: {}", loginUser.getUsername(), grade, commentGrade);
+//        회원등급을 정하기 위한 게시글 수 표시
 
 
         List<String> allInterests = Arrays.asList("정보공유", "친구만들기", "멤버십", "기타");
@@ -135,6 +143,7 @@ public class HomeController {
         model.addAttribute("allInterests", allInterests);
         model.addAttribute("interestList", loginUser.getInterestList());
         model.addAttribute("info", grade);
+        model.addAttribute("commentInfo", commentInfo);
         return "/members/modify";
     }
 
@@ -142,7 +151,7 @@ public class HomeController {
     public String newmodify(@RequestParam("username") String username, @RequestParam("password") String password,
                             @RequestParam("newpassword") String newpassword, @RequestParam("interests") String interests) {
         stockService.updateStock(username, password, newpassword, interests);
-        System.out.println("회원정보 수정 컨트롤러 작동");
+        log.info("회원정보 수정 컨트롤러 작동");
         return "redirect:/";
     }
 
@@ -154,7 +163,7 @@ public class HomeController {
     @PostMapping("/members/contentmodify")
     public String contentmodify(@RequestParam("username") String username, @RequestParam("newcontent") String newcontent, @RequestParam("newtitle") String newtitle) {
         stockService.updateContentStock(username, newcontent, newtitle);
-        System.out.println("게시글 수정 기능 컨트롤러 작동");
+        log.info("게시글 수정 기능 컨트롤러 작동");
         return "redirect:/";
     }
 

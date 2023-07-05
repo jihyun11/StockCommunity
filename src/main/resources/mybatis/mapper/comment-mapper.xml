@@ -19,7 +19,7 @@
         WHERE comment_content_id = #{idValue}
     </select>
 
-    <select id="selectCommentUpdate" resultType="com.jihyun.stockcommunity.domain.SelectComment">
+    <select id="selectCommentUpdateView" resultType="com.jihyun.stockcommunity.domain.SelectComment">
         SELECT
             comment_id as commentSelectId,
             comment_content as commentSelectContent,
@@ -28,10 +28,27 @@
             comment_content_id as commentSelectContentId
         FROM
             stockcomment
-        WHERE comment_content_id = #{commentIdValue}
+        WHERE comment_id = #{commentIdValue}
     </select>
 
+    <update id="selectCommentUpdate" parameterType="com.jihyun.stockcommunity.domain.SelectComment">
+        UPDATE stockcomment
+        SET comment_content = #{commentSelectContent}
+        WHERE comment_id = #{commentSelectId} AND comment_author = #{commentSelectAuthor}
+    </update>
 
+    <delete id="selectCommentDelete" parameterType="com.jihyun.stockcommunity.domain.SelectComment">
+        DELETE FROM stockcomment
+        WHERE comment_id = #{commentSelectId} AND comment_content = #{commentSelectContent} AND
+              comment_author = #{commentSelectAuthor} AND comment_content_id = #{commentSelectContentId}
+    </delete>
+
+    <select id="updateCommentGrade" resultType="com.jihyun.stockcommunity.domain.SelectComment">
+        SELECT
+            comment_id as commentSelectId
+        FROM stockcomment
+        WHERE comment_author = #{commentSelectAuthor}
+    </select>
 
 
 </mapper>

@@ -36,11 +36,42 @@ public class CommentController {
     }
 
     @GetMapping("/comment/modify/{commentIdValue}")
-    public String commentModify(@PathVariable("commentIdValue") String commentIdValue, Model model) {
+    public String commentModifyView(@PathVariable("commentIdValue") String commentIdValue, Model model) {
         log.info("클릭된 댓글번호: {}", commentIdValue);
-        SelectComment selectCommentUpdate = commentService.selectCommentUpdate(commentIdValue);
-        model.addAttribute("selectCommentUpdate", selectCommentUpdate);
+        SelectComment selectCommentUpdateView = commentService.selectCommentUpdateView(commentIdValue);
+        model.addAttribute("selectCommentUpdateView", selectCommentUpdateView);
 
         return "/members/commentmodify";
     }
+
+    @PostMapping("/comment/modify/{commentIdValue}")
+    public String commentModify(@RequestParam("commentSelectContent") String commentSelectContent,
+                                @RequestParam("commentSelectId") int commentSelectId,
+                                @RequestParam("commentSelectAuthor") String commentSelectAuthor,
+                                @RequestParam("commentSelectContentId") int commentSelectContentId) {
+        commentService.selectCommentUpdate(commentSelectContent, commentSelectId, commentSelectAuthor, commentSelectContentId);
+        log.info("댓글수정: 댓글번호-{}, 작성자-{}, 글내용-{}", commentSelectId, commentSelectAuthor, commentSelectContent);
+
+        return "redirect:/content/" + commentSelectContentId;
+    }
+
+    @GetMapping("/comment/delete/{commentIdValue}")
+    public String commentDeleteView(@PathVariable("commentIdValue") String commentIdValue, Model model) {
+        log.info("클릭된 삭제댓글번호: {}", commentIdValue);
+        SelectComment selectCommentUpdateView = commentService.selectCommentUpdateView(commentIdValue);
+        model.addAttribute("selectCommentUpdateView", selectCommentUpdateView);
+
+        return "/members/commentdelete";
+    }
+
+    @PostMapping("/comment/delete/{commentIdValue}")
+    public String commentDelete(@RequestParam("commentSelectContent") String commentSelectContent,
+                                @RequestParam("commentSelectId") int commentSelectId,
+                                @RequestParam("commentSelectAuthor") String commentSelectAuthor,
+                                @RequestParam("commentSelectContentId") int commentSelectContentId) {
+        commentService.selectCommentDelete(commentSelectContent, commentSelectId, commentSelectAuthor, commentSelectContentId);
+
+        return "redirect:/content/" + commentSelectContentId;
+    }
+
 }

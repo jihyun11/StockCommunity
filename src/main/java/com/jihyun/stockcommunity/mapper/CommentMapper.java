@@ -1,9 +1,8 @@
 package com.jihyun.stockcommunity.mapper;
 
-import com.jihyun.stockcommunity.domain.Comment;
 import com.jihyun.stockcommunity.domain.SelectComment;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+
 
 import java.util.List;
 
@@ -14,7 +13,12 @@ public interface CommentMapper {
 
     List<SelectComment> selectComment(String idValue);
 
-    SelectComment selectCommentUpdate(String commentIdValue);
+    SelectComment selectCommentUpdateView(String commentIdValue);
 
+    void selectCommentUpdate(String commentSelectContent, int commentSelectId, String commentSelectAuthor, int commentSelectContentId);
+
+    void selectCommentDelete(String commentSelectContent, int commentSelectId, String commentSelectAuthor, int commentSelectContentId);
+
+    List<SelectComment> updateCommentGrade(String commentSelectAuthor);
 
 }

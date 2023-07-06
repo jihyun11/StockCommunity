@@ -1,12 +1,13 @@
 package com.jihyun.stockcommunity.controller;
 
 import com.jihyun.stockcommunity.constant.Constant;
-import com.jihyun.stockcommunity.domain.Comment;
 import com.jihyun.stockcommunity.domain.ContentCommunity;
+import com.jihyun.stockcommunity.domain.Heart;
 import com.jihyun.stockcommunity.domain.SelectComment;
 import com.jihyun.stockcommunity.domain.User;
 import com.jihyun.stockcommunity.service.CommentService;
 import com.jihyun.stockcommunity.service.ContentService;
+import com.jihyun.stockcommunity.service.HeartService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,11 +26,14 @@ public class ContentController {
     private final ContentService contentService;
     private final CommentService commentService;
 
+    private final HeartService heartService;
+
     @Autowired
-    public ContentController(ContentService contentService, CommentService commentService) {
+    public ContentController(ContentService contentService, CommentService commentService, HeartService heartService) {
         this.contentService = contentService;
 
         this.commentService = commentService;
+        this.heartService = heartService;
     }
 
     @GetMapping("/members/contentlist")
@@ -45,11 +49,21 @@ public class ContentController {
         ContentCommunity contentDetailView = contentService.getContentDetailView(idValue);
         User session = (User) httpsession.getAttribute(Constant.USER_SESSION_KEY);
         String s = session.getUsername();
+        //댓글관련
         List<SelectComment> selectComment = commentService.selectComment(idValue);
+
+        //좋아요 개수 관련
+
+
 
         model.addAttribute("commentAuthor", s);
         model.addAttribute("contentDetailView", contentDetailView);
+
+        //댓글관련
         model.addAttribute("selectComment", selectComment);
+
+        //좋아요 개수 관련
+//
 
 
         log.info("게시글 상세페이지와 댓글 조회 기능 컨트롤러 작동");

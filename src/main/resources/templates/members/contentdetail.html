@@ -53,8 +53,8 @@
     <br>
     <br>
 
-
-<!--댓글 보여주는공간-->
+<!--    <form th:action="@{/like/{idValue}(idValue=${contentDetailView.id})}" method="post">-->
+    <!--댓글 보여주는공간-->
     <h3>댓글</h3>
     <table class="w3-table-all">
         <thead>
@@ -67,27 +67,31 @@
             <th>수정하기</th><br>
             <th>삭제하기</th><br>
             <th>좋아요</th><br>
+            <th>좋아요 수</th><br>
 
         </tr>
         </thead>
 
         <tr th:each="sc : ${selectComment}">
 
-
-            <td th:text="${sc.commentSelectId}"></td>
+            <td><input type="text" name="commentSelectId" th:value="${sc.commentSelectId}" readonly></td>
             <td th:text="${sc.commentSelectContent}"></td>
             <td th:text="${sc.commentSelectAuthor}" ></td>
             <td th:text="${sc.commentSelectDate}"></td>
             <td th:text="${sc.commentSelectContentId}"></td>
             <td><a th:href="@{/comment/modify/{commentIdValue}(commentIdValue=${sc.commentSelectId})}">댓글 수정하기</a></td>
             <td><a th:href="@{/comment/delete/{commentIdValue}(commentIdValue=${sc.commentSelectId})}">댓글 삭제하기</a></td>
-            <td><button name="like">좋아요</button></td>
+            <form th:action="@{/like/{idValue}(idValue=${contentDetailView.id})}" method="post">
+                <input type="hidden" name="commentSelectId" th:value="${sc.commentSelectId}">
+                <td><input type="submit" value="좋아요"></td>
+            </form>
+
+
 
         </tr>
 
     </table>
-
-
+<!--    </form>-->
 
 </div>
 

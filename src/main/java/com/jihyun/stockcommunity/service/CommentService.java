@@ -19,8 +19,11 @@ public class CommentService {
         commentMapper.insertComment(commentContent, commentAuthor, commentContentId);
     }
 
-    public List<SelectComment> selectComment(String idValue) {
-        return commentMapper.selectComment(idValue);
+//    public List<SelectComment> selectComment(String idValue) {
+//        return commentMapper.selectComment(idValue);
+//    }
+    public List<SelectComment> selectNewComment(String idValue) {
+        return commentMapper.selectNewComment(idValue);
     }
 
     public SelectComment selectCommentUpdateView(String commentIdValue) {

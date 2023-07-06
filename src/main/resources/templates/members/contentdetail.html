@@ -72,7 +72,7 @@
         </tr>
         </thead>
 
-        <tr th:each="sc : ${selectComment}">
+        <tr th:each="sc : ${selectNewComment}">
 
             <td><input type="text" name="commentSelectId" th:value="${sc.commentSelectId}" readonly></td>
             <td th:text="${sc.commentSelectContent}"></td>
@@ -85,6 +85,7 @@
                 <input type="hidden" name="commentSelectId" th:value="${sc.commentSelectId}">
                 <td><input type="submit" value="좋아요"></td>
             </form>
+            <td th:text="${sc.likeCount}"></td>
 
 
 

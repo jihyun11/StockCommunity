@@ -39,6 +39,10 @@ public class HeartController {
         String s = session.getUsername();
         heartService.Heart(commentSelectId, s);
 
+        //좋아요 정보를 세션에 넣음
+        int selectSession = commentSelectId;
+        httpsession.setAttribute("selectSession", selectSession);
+
 
         log.info("좋아요 기능 수행");
         return "redirect:/content/" + idValue;

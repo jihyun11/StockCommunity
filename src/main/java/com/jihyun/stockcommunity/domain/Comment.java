@@ -15,6 +15,7 @@ public class Comment {
     private Date commentDate;
     private int commentId;
     private int commentContentId;
+    private int likeCount;
 
 
 }

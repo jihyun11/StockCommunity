@@ -7,16 +7,30 @@
     </insert>
 <!--    인서트문은 왜 컬럼명이랑 도메인의 필드명이랑 같지 않아도 되는거??-->
 
-    <select id="selectComment" resultType="com.jihyun.stockcommunity.domain.SelectComment">
-        SELECT
-            comment_id as commentSelectId,
-            comment_content as commentSelectContent,
-            comment_author as commentSelectAuthor,
-            comment_date as commentSelectDate,
-            comment_content_id as commentSelectContentId
-        FROM
-            stockcomment
-        WHERE comment_content_id = #{idValue}
+<!--    <select id="selectComment" resultType="com.jihyun.stockcommunity.domain.SelectComment">-->
+<!--        SELECT-->
+<!--            comment_id as commentSelectId,-->
+<!--            comment_content as commentSelectContent,-->
+<!--            comment_author as commentSelectAuthor,-->
+<!--            comment_date as commentSelectDate,-->
+<!--            comment_content_id as commentSelectContentId-->
+<!--        FROM-->
+<!--            stockcomment-->
+<!--        WHERE comment_content_id = #{idValue}-->
+<!--    </select>-->
+
+<!--    !!!!!!!!!!!!!!게시글별로 댓글 조회하는 새쿼리!!!!!!!!!!-->
+    <select id="selectNewComment" resultType="com.jihyun.stockcommunity.domain.SelectComment">
+        SELECT sc.comment_id AS commentSelectId, sc.comment_content as commentSelectContent,
+               sc.comment_author as commentSelectAuthor, sc.comment_date as commentSelectDate,
+               sc.comment_content_id as commentSelectContentId, hc.likeCount
+        FROM stockcomment sc
+                 LEFT JOIN (
+            SELECT commentSelectId, COUNT(*) AS likeCount
+            FROM heart
+            GROUP BY commentSelectId
+        ) hc ON sc.comment_id = hc.commentSelectId
+        WHERE sc.comment_content_id = #{idValue}
     </select>
 
     <select id="selectCommentUpdateView" resultType="com.jihyun.stockcommunity.domain.SelectComment">

@@ -50,7 +50,10 @@ public class ContentController {
         User session = (User) httpsession.getAttribute(Constant.USER_SESSION_KEY);
         String s = session.getUsername();
         //댓글관련
-        List<SelectComment> selectComment = commentService.selectComment(idValue);
+//        List<SelectComment> selectComment = commentService.selectComment(idValue);
+        List<SelectComment> selectNewComment = commentService.selectNewComment(idValue);
+
+
 
         //좋아요 개수 관련
 
@@ -60,7 +63,8 @@ public class ContentController {
         model.addAttribute("contentDetailView", contentDetailView);
 
         //댓글관련
-        model.addAttribute("selectComment", selectComment);
+//        model.addAttribute("selectComment", selectComment);
+        model.addAttribute("selectNewComment", selectNewComment);
 
         //좋아요 개수 관련
 //

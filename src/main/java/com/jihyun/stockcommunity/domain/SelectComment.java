@@ -14,4 +14,5 @@ public class SelectComment {
     private Date commentSelectDate;
     private int commentSelectId;
     private int commentSelectContentId;
+    private int likeCount;
 }

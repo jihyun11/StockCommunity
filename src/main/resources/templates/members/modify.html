@@ -22,6 +22,8 @@
             <input class="w3-input" type="password" id="newpassword" name="newpassword" placeholder="수정하실 비밀번호를 입력하세요"><br>
             <input class="w3-input" type="text" id="grade" name="grade" th:value="${info >= 3 || commentGrade >= 2? '회원등급: 정회원' : '회원등급: 준회원'}"
                    readonly><br>
+            <a class="w3-button" th:href="@{/members/myheartcontent}">좋아요한 게시글 보기</a>
+            <a class="w3-button" th:href="@{/members/myheart}">좋아요한 댓글 보기</a>
 
 
             <h4>관심사 선택</h4>

@@ -11,6 +11,7 @@ public class ContentCommunity {
     private String title;
 
     private int id;
+    private int likeCount;
 
     public ContentCommunity(String username, String content, String title) {
         this.username = username;

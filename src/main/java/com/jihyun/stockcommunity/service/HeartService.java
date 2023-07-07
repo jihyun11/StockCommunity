@@ -20,5 +20,9 @@ public class HeartService {
         heartMapper.insertHeart(commentSelectId, nowUserName);
     }
 
+    public void HeartContent(int contentSelectId, String nowUserName) {
+        heartMapper.insertContentHeart(contentSelectId, nowUserName);
+    }
+
 
 }

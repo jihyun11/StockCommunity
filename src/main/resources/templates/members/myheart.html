@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+<div class="w3-padding w3-display-topmiddle">
+    <h2>좋아요 누른 댓글</h2>
+        <table class="w3-table-all">
+            <thead>
+            <tr class="w3-green">
+                <th>댓글번호</th><br>
+                <th>내용</th><br>
+                <th>작성자</th><br>
+
+            </tr>
+            </thead>
+
+            <tr th:each="shc : ${selectHeartComment}">
+                <td th:text="${shc.commentSelectId}"></td>
+                <td th:text="${shc.commentSelectContent}"></td>
+                <td th:text="${shc.commentSelectAuthor}"></td>
+
+            </tr>
+
+        </table>
+        <br>
+        <br>
+        <li><a th:href="@{/members/modify}">뒤로 가기</a></li>
+        <li><a href="/">홈으로</a></li>
+    </form>
+
+
+
+
+
+</div>

@@ -16,6 +16,8 @@
             <th>제목</th><br>
             <th>작성자</th><br>
             <th>내용</th><br>
+            <th>좋아요</th><br>
+            <th>좋아요 수</th><br>
         </tr>
         </thead>
         <tr>
@@ -23,6 +25,11 @@
             <td th:text="${contentDetailView.title}"></td>
             <td th:text="${contentDetailView.username}"></td>
             <td th:text="${contentDetailView.content}"></td>
+            <form th:action="@{/like/content/{idValue}(idValue=${contentDetailView.id})}" method="post">
+                <input type="hidden" name="contentSelectId" th:value="${contentDetailView.id}">
+                <td><input type="submit" value="좋아요"></td>
+            </form>
+            <td th:text="${contentDetailView.likeCount}"></td>
 
         </tr>
 

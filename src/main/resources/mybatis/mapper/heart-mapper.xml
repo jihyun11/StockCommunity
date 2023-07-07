@@ -20,5 +20,16 @@
             )
     </insert>
 
+    <insert id="insertContentHeart" parameterType="com.jihyun.stockcommunity.domain.HeartContent">
+        INSERT INTO heartcontent (contentSelectId, likeCount, nowUserName)
+        SELECT #{contentSelectId}, 1, #{nowUserName}
+        FROM dual
+        WHERE NOT EXISTS (
+                SELECT 1
+                FROM heartcontent
+                WHERE contentSelectId = #{contentSelectId} AND nowUserName = #{nowUserName}
+            )
+    </insert>
+
 
 </mapper>

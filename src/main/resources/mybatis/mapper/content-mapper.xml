@@ -11,15 +11,29 @@
             stockcontent
     </select>
 
+<!--    <select id="contentDetailView" resultType="com.jihyun.stockcommunity.domain.ContentCommunity">-->
+<!--        SELECT-->
+<!--            title,-->
+<!--            username,-->
+<!--            content,-->
+<!--            id-->
+<!--        FROM-->
+<!--            stockcontent -->
+<!--        WHERE id = #{idValue}-->
+<!--    </select>-->
+
+<!--    !!!!!!!글번호별로 게시글 조회하는 새쿼리!!!!!!!!-->
     <select id="contentDetailView" resultType="com.jihyun.stockcommunity.domain.ContentCommunity">
-        SELECT
-            title,
-            username,
-            content,
-            id
-        FROM
-            stockcontent
-        WHERE id = #{idValue}
+        SELECT sc.title, sc.username,
+               sc.content, sc.id,
+               hc.likeCount
+        FROM stockcontent sc
+                 LEFT JOIN (
+            SELECT contentSelectId, COUNT(*) AS likeCount
+            FROM heartcontent
+            GROUP BY contentSelectId
+        ) hc ON sc.id = hc.contentSelectId
+        WHERE sc.id = #{idValue}
     </select>
 
     <select id="contentDetailUpdateView" resultType="com.jihyun.stockcommunity.domain.ContentCommunity">

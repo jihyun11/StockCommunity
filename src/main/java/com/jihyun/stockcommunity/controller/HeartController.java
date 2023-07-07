@@ -28,6 +28,27 @@ public class HeartController {
     }
 
 
+//    게시글 좋아요 기능
+    @GetMapping("/like/content/{idValue}")
+    public String ContentHeart() {
+        return "/likecontent";
+    }
+
+    @PostMapping("/like/content/{idValue}")
+    public String ContentLike(@PathVariable("idValue") String idValue, @RequestParam("contentSelectId") int id, Model model, HttpSession httpsession) {
+        User session = (User) httpsession.getAttribute(Constant.USER_SESSION_KEY);
+        String s = session.getUsername();
+        heartService.HeartContent(id, s);
+
+
+
+
+        log.info("게시글에 좋아요 기능 수행");
+        return "redirect:/content/" + idValue;
+    }
+
+
+
     @GetMapping("/like/{idValue}")
     public String Heart() {
         return "/like";
@@ -49,5 +70,4 @@ public class HeartController {
     }
 
 
-
-    }
+}

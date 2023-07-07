@@ -11,4 +11,6 @@ public interface HeartMapper {
 
     void insertHeart(int commentSelectId, String nowUserName);
 
+    void insertContentHeart(int contentSelectId, String nowUserName);
+
 }

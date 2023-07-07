@@ -2,6 +2,7 @@ package com.jihyun.stockcommunity.service;
 
 
 import com.jihyun.stockcommunity.domain.ContentCommunity;
+import com.jihyun.stockcommunity.domain.SelectComment;
 import com.jihyun.stockcommunity.domain.User;
 import com.jihyun.stockcommunity.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,13 @@ public class LoginService {
 
     public List<ContentCommunity> updateMemberGrade(String username) {
         return memberMapper.updateGrade(username);
+    }
+
+    public List<SelectComment> selectHeartComment(String loginUserName) { //좋아요한댓글 보기
+        return memberMapper.heartCommentMyInfo(loginUserName);
+    }
+
+    public List<ContentCommunity> selectHeartContent(String loginUserName) { //좋아요한게시글 보기
+        return memberMapper.heartContentMyInfo(loginUserName);
     }
 }

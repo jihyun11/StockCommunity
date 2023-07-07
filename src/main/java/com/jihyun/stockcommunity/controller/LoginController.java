@@ -2,6 +2,7 @@ package com.jihyun.stockcommunity.controller;
 
 import com.jihyun.stockcommunity.constant.Constant;
 import com.jihyun.stockcommunity.domain.ContentCommunity;
+import com.jihyun.stockcommunity.domain.SelectComment;
 import com.jihyun.stockcommunity.domain.User;
 import com.jihyun.stockcommunity.service.LoginService;
 import lombok.extern.slf4j.Slf4j;
@@ -94,4 +95,36 @@ public class LoginController {
     }
 
 
+
+//    !!!!!!!내가좋아요한댓글페이지!!!!!!
+    @GetMapping("/members/myheart")
+    public String myHeart(HttpSession httpSession, Model model) {
+        User loginUser = (User) httpSession.getAttribute(Constant.USER_SESSION_KEY);
+        String loginUserName = loginUser.getUsername();
+
+        List<SelectComment> selectHeartComment = loginService.selectHeartComment(loginUserName);
+
+        model.addAttribute("loginUserName", loginUserName);
+        model.addAttribute("selectHeartComment", selectHeartComment);
+        return "/members/myheart";
 }
+
+
+//    !!!!!!!내가좋아요한게시글페이지!!!!!!
+    @GetMapping("/members/myheartcontent")
+    public String myHeartContent(HttpSession httpSession, Model model) {
+        User loginUser = (User) httpSession.getAttribute(Constant.USER_SESSION_KEY);
+        String loginUserName = loginUser.getUsername();
+
+        List<ContentCommunity> selectHeartContent = loginService.selectHeartContent(loginUserName);
+
+        model.addAttribute("loginUserName", loginUserName);
+        model.addAttribute("selectHeartContent", selectHeartContent);
+        return "/members/myheartcontent";
+    }
+
+
+
+}
+
+

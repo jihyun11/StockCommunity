@@ -32,5 +32,24 @@
         WHERE username = #{username}
     </select>
 
+    <select id="heartCommentMyInfo" resultType="com.jihyun.stockcommunity.domain.SelectComment">
+        SELECT sc.comment_id      AS commentSelectId,
+               sc.comment_content AS commentSelectContent,
+               sc.comment_author  AS commentSelectAuthor
+        FROM stockcomment sc
+        WHERE sc.comment_id IN (SELECT commentSelectId
+                                FROM heart
+                                WHERE nowUserName = #{loginUserName})
+    </select>
+
+    <select id="heartContentMyInfo" resultType="com.jihyun.stockcommunity.domain.ContentCommunity">
+        SELECT sc.title, sc.username,
+               sc.content, sc.id
+        FROM stockcontent sc
+        WHERE sc.id IN (SELECT contentSelectId
+                                FROM heartcontent
+                                WHERE nowUserName = #{loginUserName})
+    </select>
+
 
 </mapper>

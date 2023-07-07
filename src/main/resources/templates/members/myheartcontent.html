@@ -7,7 +7,6 @@
 </head>
 <body>
 <div class="w3-padding w3-display-topmiddle">
-  <form action="/members/myheartcontent" method="post">
   <h2>좋아요 누른 게시글</h2>
   <table class="w3-table-all">
     <thead>
@@ -25,8 +24,10 @@
       <td th:text="${shc.title}"></td>
       <td th:text="${shc.username}"></td>
       <td th:text="${shc.content}"></td>
-      <input type="hidden" name="id" th:value="${shc.id}">
-      <td><input type="submit" value="좋아요 해제"></td>
+      <form th:action="@{/members/myheartcontent}" method="post">
+        <input type="hidden" name="id" th:value="${shc.id}">
+        <td><input type="submit" value="좋아요 해제"></td>
+      </form>
 
     </tr>
 
@@ -35,7 +36,7 @@
   <br>
   <li><a th:href="@{/members/modify}">뒤로 가기</a></li>
   <li><a href="/">홈으로</a></li>
-  </form>
+
 
 
 

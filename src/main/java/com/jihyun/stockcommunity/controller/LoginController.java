@@ -7,11 +7,13 @@ import com.jihyun.stockcommunity.domain.User;
 import com.jihyun.stockcommunity.service.LoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -116,6 +118,8 @@ public class LoginController {
 
         return "redirect:/members/myheart";
     }
+
+
 
 
 //    !!!!!!!내가좋아요한게시글페이지!!!!!!

@@ -109,6 +109,14 @@ public class LoginController {
         return "/members/myheart";
 }
 
+    //    !!!!!!!내가좋아요한댓글해제하기!!!!!!
+    @PostMapping("/members/myheart")
+    public String myHeartDelete(@RequestParam("commentSelectId") int commentSelectId) {
+        loginService.deleteHeartComment(commentSelectId);
+
+        return "redirect:/members/myheart";
+    }
+
 
 //    !!!!!!!내가좋아요한게시글페이지!!!!!!
     @GetMapping("/members/myheartcontent")
@@ -122,6 +130,16 @@ public class LoginController {
         model.addAttribute("selectHeartContent", selectHeartContent);
         return "/members/myheartcontent";
     }
+
+//    !!!!!!!내가좋아요한게시글페이지!!!!!!
+    @PostMapping("/members/myheartcontent")
+    public String myHeartContentDelete(@RequestParam("id") int id) {
+        loginService.deleteHeartContent(id);
+
+        return "redirect:/members/myheartcontent";
+    }
+
+
 
 
 

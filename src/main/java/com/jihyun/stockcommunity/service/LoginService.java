@@ -44,4 +44,12 @@ public class LoginService {
     public List<ContentCommunity> selectHeartContent(String loginUserName) { //좋아요한게시글 보기
         return memberMapper.heartContentMyInfo(loginUserName);
     }
+
+    public void deleteHeartComment(int commentSelectId) { //좋아요한댓글 해제하기
+        memberMapper.heartCommentMyInfoDelete(commentSelectId);
+    }
+
+    public void deleteHeartContent(int id) { //좋아요한게시글 해제하기
+        memberMapper.heartContentMyInfoDelete(id);
+    }
 }

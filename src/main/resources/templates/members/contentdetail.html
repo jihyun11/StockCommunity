@@ -27,7 +27,10 @@
             <td th:text="${contentDetailView.content}"></td>
             <form th:action="@{/like/content/{idValue}(idValue=${contentDetailView.id})}" method="post">
                 <input type="hidden" name="contentSelectId" th:value="${contentDetailView.id}">
-                <td><input type="submit" value="좋아요"></td>
+                <td>
+                    <input th:if="${contentDetailView.myLike != 0}" type="submit" value="좋아요 해제">
+                    <input th:unless="${contentDetailView.myLike != 0}" type="submit" value="좋아요">
+                </td>
             </form>
             <td th:text="${contentDetailView.likeCount}"></td>
 

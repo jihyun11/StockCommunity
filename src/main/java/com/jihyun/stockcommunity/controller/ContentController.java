@@ -46,20 +46,17 @@ public class ContentController {
 
     @GetMapping("/content/{idValue}")
     public String content(@PathVariable("idValue") String idValue, Model model, HttpSession httpsession) {
-        ContentCommunity contentDetailView = contentService.getContentDetailView(idValue);
         User session = (User) httpsession.getAttribute(Constant.USER_SESSION_KEY);
-        String s = session.getUsername();
+        String username = session.getUsername();
+        ContentCommunity contentDetailView = contentService.getContentDetailView(idValue, username);
+
         //댓글관련
 //        List<SelectComment> selectComment = commentService.selectComment(idValue);
         List<SelectComment> selectNewComment = commentService.selectNewComment(idValue);
 
-
-
         //좋아요 개수 관련
 
-
-
-        model.addAttribute("commentAuthor", s);
+        model.addAttribute("commentAuthor", username);
         model.addAttribute("contentDetailView", contentDetailView);
 
         //댓글관련
@@ -69,7 +66,7 @@ public class ContentController {
         //좋아요 개수 관련
 //
 
-
+        log.info("myLike 값:{}", contentDetailView.getMyLike());
         log.info("게시글 상세페이지와 댓글 조회 기능 컨트롤러 작동");
 
         return "/members/contentdetail";

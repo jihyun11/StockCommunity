@@ -24,9 +24,14 @@
 
 <!--    !!!!!!!글번호별로 게시글 조회하는 새쿼리!!!!!!!!-->
     <select id="contentDetailView" resultType="com.jihyun.stockcommunity.domain.ContentCommunity">
-        SELECT sc.title, sc.username,
-               sc.content, sc.id,
-               hc.likeCount
+        SELECT sc.title,
+               sc.username,
+               sc.content,
+               sc.id,
+               hc.likeCount,
+                (SELECT count(*)
+                 FROM heartcontent
+                 WHERE contentSelectId = #{idValue} AND nowUserName = #{username}) as myLike-- 내가 좋아요를 눌렀는지. 눌렀으면 1, 안눌렀으면 0
         FROM stockcontent sc
                  LEFT JOIN (
             SELECT contentSelectId, COUNT(*) AS likeCount

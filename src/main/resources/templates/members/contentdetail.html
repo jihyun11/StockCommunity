@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="w3-padding w3-display-topmiddle">
-    <h2>게시글 목록</h2>
+    <h2>게시글 상세페이지</h2>
 
     <table class="w3-table-all">
         <thead>
@@ -25,11 +25,16 @@
             <td th:text="${contentDetailView.title}"></td>
             <td th:text="${contentDetailView.username}"></td>
             <td th:text="${contentDetailView.content}"></td>
-            <form th:action="@{/like/content/{idValue}(idValue=${contentDetailView.id})}" method="post">
-                <input type="hidden" name="contentSelectId" th:value="${contentDetailView.id}">
+            <form th:if="${contentDetailView.myLike != 0}" th:action="@{/like/content/cancel/{idValue}(idValue=${contentDetailView.id})}" method="post">
+                <input type="hidden" name="id" th:value="${contentDetailView.id}">
                 <td>
                     <input th:if="${contentDetailView.myLike != 0}" type="submit" value="좋아요 해제">
-                    <input th:unless="${contentDetailView.myLike != 0}" type="submit" value="좋아요">
+                </td>
+            </form>
+            <form th:if="${contentDetailView.myLike == 0}" th:action="@{/like/content/{idValue}(idValue=${contentDetailView.id})}" method="post">
+                <td>
+                    <input type="hidden" name="contentSelectId" th:value="${contentDetailView.id}">
+                    <input th:if="${contentDetailView.myLike == 0}" type="submit" value="좋아요">
                 </td>
             </form>
             <td th:text="${contentDetailView.likeCount}"></td>
@@ -49,7 +54,7 @@
     <h3>댓글창</h3>
     <form th:action="@{/content/{idValue}(idValue=${contentDetailView.id})}" method="post">
         <textarea class="comment-textarea" name="commentContent" rows="2" placeholder="댓글을 입력하세요..."></textarea>
-        <input type="text" name="commentAuthor" th:value="${commentAuthor}" readonly></input><br>
+        <input type="text" name="commentAuthor" th:value="${commentAuthor}" readonly><br>
         <input type="text" name="commentContentId" th:value="${contentDetailView.id}" readonly>
         <input type="submit" value="전송">
     </form>
@@ -91,9 +96,17 @@
             <td th:text="${sc.commentSelectContentId}"></td>
             <td><a th:href="@{/comment/modify/{commentIdValue}(commentIdValue=${sc.commentSelectId})}">댓글 수정하기</a></td>
             <td><a th:href="@{/comment/delete/{commentIdValue}(commentIdValue=${sc.commentSelectId})}">댓글 삭제하기</a></td>
-            <form th:action="@{/like/{idValue}(idValue=${contentDetailView.id})}" method="post">
+            <form th:if="${sc.myLike != 0}" th:action="@{/like/cancel/{idValue}(idValue=${contentDetailView.id})}" method="post">
                 <input type="hidden" name="commentSelectId" th:value="${sc.commentSelectId}">
-                <td><input type="submit" value="좋아요"></td>
+                <td>
+                    <input th:if="${sc.myLike != 0}" type="submit" value="좋아요 해제">
+                </td>
+            </form>
+            <form th:if="${sc.myLike == 0}" th:action="@{/like/{idValue}(idValue=${contentDetailView.id})}" method="post">
+                <input type="hidden" name="commentSelectId" th:value="${sc.commentSelectId}">
+                <td>
+                    <input th:if="${sc.myLike == 0}" type="submit" value="좋아요">
+                </td>
             </form>
             <td th:text="${sc.likeCount}"></td>
 

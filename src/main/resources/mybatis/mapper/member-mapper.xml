@@ -43,13 +43,14 @@
                                 WHERE nowUserName = #{loginUserName})
     </select>
 
+<!--    내가 좋아요한 댓글만 해제하기-->
     <delete id="heartCommentMyInfoDelete" parameterType="com.jihyun.stockcommunity.domain.SelectComment">
         DELETE FROM heart
         WHERE commentSelectId IN (
             SELECT comment_id as commentSelectId
             FROM stockcomment
             WHERE comment_id = #{commentSelectId}
-        )
+        ) AND nowUserName = #{username}
     </delete>
 
 
@@ -62,14 +63,14 @@
                                 FROM heartcontent
                                 WHERE nowUserName = #{loginUserName})
     </select>
-
+<!--    내가 좋아요한 게시글만 해제하기-->
     <delete id="heartContentMyInfoDelete" parameterType="com.jihyun.stockcommunity.domain.ContentCommunity">
         DELETE FROM heartcontent
         WHERE contentSelectId IN (
             SELECT id
             FROM stockcontent
             WHERE id = #{id}
-        )
+        ) AND nowUserName = #{username}
     </delete>
 
 

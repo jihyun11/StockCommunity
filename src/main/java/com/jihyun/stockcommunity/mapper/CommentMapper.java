@@ -12,7 +12,7 @@ public interface CommentMapper {
 
 
 //    List<SelectComment> selectComment(String idValue);
-    List<SelectComment> selectNewComment(String idValue);
+    List<SelectComment> selectNewComment(String idValue, String username);
 
     SelectComment selectCommentUpdateView(String commentIdValue);
 

@@ -113,8 +113,10 @@ public class LoginController {
 
     //    !!!!!!!내가좋아요한댓글해제하기!!!!!!
     @PostMapping("/members/myheart")
-    public String myHeartDelete(@RequestParam("commentSelectId") int commentSelectId) {
-        loginService.deleteHeartComment(commentSelectId);
+    public String myHeartDelete(@RequestParam("commentSelectId") int commentSelectId, HttpSession httpSession) {
+        User user = (User) httpSession.getAttribute(Constant.USER_SESSION_KEY);
+        String username = user.getUsername();
+        loginService.deleteHeartComment(commentSelectId, username);
 
         return "redirect:/members/myheart";
     }
@@ -137,8 +139,10 @@ public class LoginController {
 
 //    !!!!!!!내가좋아요한게시글페이지!!!!!!
     @PostMapping("/members/myheartcontent")
-    public String myHeartContentDelete(@RequestParam("id") int id) {
-        loginService.deleteHeartContent(id);
+    public String myHeartContentDelete(@RequestParam("id") int id, HttpSession httpSession) {
+        User user = (User) httpSession.getAttribute(Constant.USER_SESSION_KEY);
+        String username = user.getUsername();
+        loginService.deleteHeartContent(id, username);
 
         return "redirect:/members/myheartcontent";
     }

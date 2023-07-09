@@ -52,7 +52,7 @@ public class ContentController {
 
         //댓글관련
 //        List<SelectComment> selectComment = commentService.selectComment(idValue);
-        List<SelectComment> selectNewComment = commentService.selectNewComment(idValue);
+        List<SelectComment> selectNewComment = commentService.selectNewComment(idValue, username);
 
         //좋아요 개수 관련
 
@@ -62,11 +62,13 @@ public class ContentController {
         //댓글관련
 //        model.addAttribute("selectComment", selectComment);
         model.addAttribute("selectNewComment", selectNewComment);
+        model.addAttribute("commentSelectId", selectNewComment.get(0));
 
         //좋아요 개수 관련
 //
 
         log.info("myLike 값:{}", contentDetailView.getMyLike());
+
         log.info("게시글 상세페이지와 댓글 조회 기능 컨트롤러 작동");
 
         return "/members/contentdetail";

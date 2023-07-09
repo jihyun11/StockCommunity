@@ -21,9 +21,15 @@
 
 <!--    !!!!!!!!!!!!!!게시글별로 댓글 조회하는 새쿼리!!!!!!!!!!-->
     <select id="selectNewComment" resultType="com.jihyun.stockcommunity.domain.SelectComment">
-        SELECT sc.comment_id AS commentSelectId, sc.comment_content as commentSelectContent,
-               sc.comment_author as commentSelectAuthor, sc.comment_date as commentSelectDate,
-               sc.comment_content_id as commentSelectContentId, hc.likeCount
+        SELECT sc.comment_id AS commentSelectId,
+               sc.comment_content as commentSelectContent,
+               sc.comment_author as commentSelectAuthor,
+               sc.comment_date as commentSelectDate,
+               sc.comment_content_id as commentSelectContentId,
+               hc.likeCount,
+               (SELECT count(*)
+                FROM heart
+                WHERE commentSelectId = sc.comment_id AND nowUserName = #{username}) as myLike-- 내가 좋아요를 눌렀는지. 눌렀으면 1, 안눌렀으면 0
         FROM stockcomment sc
                  LEFT JOIN (
             SELECT commentSelectId, COUNT(*) AS likeCount

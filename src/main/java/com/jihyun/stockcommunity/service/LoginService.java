@@ -45,11 +45,11 @@ public class LoginService {
         return memberMapper.heartContentMyInfo(loginUserName);
     }
 
-    public void deleteHeartComment(int commentSelectId) { //좋아요한댓글 해제하기
-        memberMapper.heartCommentMyInfoDelete(commentSelectId);
+    public void deleteHeartComment(int commentSelectId, String username) { //좋아요한댓글 해제하기
+        memberMapper.heartCommentMyInfoDelete(commentSelectId, username);
     }
 
-    public void deleteHeartContent(int id) { //좋아요한게시글 해제하기
-        memberMapper.heartContentMyInfoDelete(id);
+    public void deleteHeartContent(int id, String username) { //좋아요한게시글 해제하기
+        memberMapper.heartContentMyInfoDelete(id, username);
     }
 }

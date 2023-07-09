@@ -21,9 +21,9 @@ public interface MemberMapper {
 
     List<ContentCommunity> heartContentMyInfo(String loginUserName); //좋아요한게시글 보기
 
-    void heartCommentMyInfoDelete(int commentSelectId); //좋아요한댓글 해제하기
+    void heartCommentMyInfoDelete(int commentSelectId, String username); //좋아요한댓글 해제하기
 
-    void heartContentMyInfoDelete(int id); //좋아요한게시글 해제하기
+    void heartContentMyInfoDelete(int id, String username); //좋아요한게시글 해제하기
 
 
 }

@@ -8,7 +8,8 @@ import java.util.List;
 @Mapper
 public interface ContentMapper {
 
-    List<ContentCommunity> contentListView();
+    List<ContentCommunity> contentListView(int offset);
+    int getContentCount();
 
     ContentCommunity contentDetailView(String idValue, String username);
 

@@ -16,9 +16,15 @@ public class ContentService {
         this.contentMapper = contentMapper;
     }
 
-    public List<ContentCommunity> getContentListView() {
-        return contentMapper.contentListView();
+    //페이지네이션 포함
+    public List<ContentCommunity> getContentListView(int offset) {
+        return contentMapper.contentListView(offset);
     }
+    //페이지네이션
+    public int getContentCount() {
+        return contentMapper.getContentCount();
+    }
+
 
     public ContentCommunity getContentDetailView(String idValue, String username) {
         return contentMapper.contentDetailView(idValue, username);

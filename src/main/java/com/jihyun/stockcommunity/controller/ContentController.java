@@ -37,9 +37,17 @@ public class ContentController {
     }
 
     @GetMapping("/members/contentlist")
-    public String contentlist(Model model) {
-        List<ContentCommunity> contentList = contentService.getContentListView();
+    public String contentlist(Model model, @RequestParam(value = "page", defaultValue = "1") int page) {
+        int pageSize = 5; // 페이지당 게시글 수
+        int totalCount = contentService.getContentCount();
+        int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+
+        int offset = (page - 1) * pageSize;
+        List<ContentCommunity> contentList = contentService.getContentListView(offset);
+
+        model.addAttribute("totalPages", totalPages);
         model.addAttribute("contentList", contentList);
+
         log.info("게시글목록 조회 기능 컨트롤러 작동");
         return "/members/contentlist";
     }

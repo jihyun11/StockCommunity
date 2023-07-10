@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="euc-kr"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jihyun.stockcommunity.mapper.ContentMapper">
+<!--    페이지네이션 포함한 게시글 리스트 조회하는 쿼리-->
     <select id="contentListView" resultType="com.jihyun.stockcommunity.domain.ContentCommunity">
         SELECT
             title,
@@ -9,18 +10,19 @@
 
         FROM
             stockcontent
+
+        LIMIT #{offset}, 5
     </select>
 
-<!--    <select id="contentDetailView" resultType="com.jihyun.stockcommunity.domain.ContentCommunity">-->
-<!--        SELECT-->
-<!--            title,-->
-<!--            username,-->
-<!--            content,-->
-<!--            id-->
-<!--        FROM-->
-<!--            stockcontent -->
-<!--        WHERE id = #{idValue}-->
-<!--    </select>-->
+<!--    페이지네이션의 전체 글의 개수를 세는 쿼리-->
+
+    <select id="getContentCount" resultType="int">
+        SELECT COUNT(*)
+        FROM stockcontent
+    </select>
+
+
+
 
 <!--    !!!!!!!글번호별로 게시글 조회하는 새쿼리!!!!!!!!-->
     <select id="contentDetailView" resultType="com.jihyun.stockcommunity.domain.ContentCommunity">

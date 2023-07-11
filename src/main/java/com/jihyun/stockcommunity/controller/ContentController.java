@@ -59,7 +59,6 @@ public class ContentController {
         ContentCommunity contentDetailView = contentService.getContentDetailView(idValue, username);
 
         //댓글관련
-//        List<SelectComment> selectComment = commentService.selectComment(idValue);
         List<SelectComment> selectNewComment = commentService.selectNewComment(idValue, username);
 
         //좋아요 개수 관련
@@ -68,9 +67,9 @@ public class ContentController {
         model.addAttribute("contentDetailView", contentDetailView);
 
         //댓글관련
-//        model.addAttribute("selectComment", selectComment);
         model.addAttribute("selectNewComment", selectNewComment);
-        model.addAttribute("commentSelectId", selectNewComment.get(0));
+//        model.addAttribute("commentSelectId", selectNewComment.get(0));
+//        주석처리한부분 왜안됐던거였는지??
 
         //좋아요 개수 관련
 //

@@ -26,14 +26,11 @@ public class ContentController {
     private final ContentService contentService;
     private final CommentService commentService;
 
-    private final HeartService heartService;
 
     @Autowired
-    public ContentController(ContentService contentService, CommentService commentService, HeartService heartService) {
+    public ContentController(ContentService contentService, CommentService commentService) {
         this.contentService = contentService;
-
         this.commentService = commentService;
-        this.heartService = heartService;
     }
 
     @GetMapping("/members/contentlist")
@@ -47,6 +44,7 @@ public class ContentController {
 
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("contentList", contentList);
+        model.addAttribute("page", page);
 
         log.info("게시글목록 조회 기능 컨트롤러 작동");
         return "/members/contentlist";

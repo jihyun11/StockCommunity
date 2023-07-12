@@ -1,11 +1,8 @@
 package com.jihyun.stockcommunity.service;
 
-import com.jihyun.stockcommunity.domain.Heart;
-import com.jihyun.stockcommunity.domain.SelectComment;
 import com.jihyun.stockcommunity.mapper.HeartMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class HeartService {

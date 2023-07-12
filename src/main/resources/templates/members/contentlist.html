@@ -25,9 +25,15 @@
 
     <!-- 페이지네이션 -->
     <div class="pagination">
-        <ul>
-            <li th:each="pageNumber : ${#numbers.sequence(1, totalPages)}">
-                <a th:href="@{/members/contentlist(page=${pageNumber})}" th:text="${pageNumber}"></a>
+        <ul style="display: flex;">
+            <li>
+                <a th:if="${page != 1}" th:href="@{/members/contentlist(page=1)}" style="margin-right: 10px; list-style: none;">&laquo; 맨처음</a>
+            </li>
+            <li th:each="pageNumber : ${#numbers.sequence(1, totalPages)}" style="margin-right: 10px; list-style: none;">
+               <a th:href="@{/members/contentlist(page=${pageNumber})}" th:text="${pageNumber}"></a>
+            </li>
+            <li>
+                <a th:if="${page < totalPages}" th:href="@{/members/contentlist(page=${totalPages})}" style="margin-right: 10px; list-style: none;">맨끝 &raquo;</a>
             </li>
         </ul>
     </div>

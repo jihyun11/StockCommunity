@@ -17,11 +17,8 @@ public class CommentController {
 
     private final CommentService commentService;
 
-    private final HeartService heartService;
-
-    public CommentController(CommentService commentService, HeartService heartService) {
+    public CommentController(CommentService commentService) {
         this.commentService = commentService;
-        this.heartService = heartService;
     }
 
     @PostMapping("/content/{idValue}")

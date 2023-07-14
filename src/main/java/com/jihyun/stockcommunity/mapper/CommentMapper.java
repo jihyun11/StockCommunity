@@ -10,7 +10,9 @@ import java.util.List;
 public interface CommentMapper {
     void insertComment(String commentContent, String commentAuthor, int commentContentId);
 
-    List<SelectComment> selectNewComment(String idValue, String username);
+    List<SelectComment> selectNewComment(String idValue, String username, int offset);
+
+    int getCommentCount(int idValue);
 
     SelectComment selectCommentUpdateView(String commentIdValue);
 

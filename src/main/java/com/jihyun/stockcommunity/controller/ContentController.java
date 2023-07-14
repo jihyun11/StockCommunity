@@ -51,13 +51,19 @@ public class ContentController {
     }
 
     @GetMapping("/content/{idValue}")
-    public String content(@PathVariable("idValue") String idValue, Model model, HttpSession httpsession) {
+    public String content(@PathVariable("idValue") String idValue, Model model, HttpSession httpsession,
+                          @RequestParam(value = "page", defaultValue = "1") int page) {
+        int pageSize = 5; // 페이지당 댓글 수
+        int totalCount = commentService.getCommentCount(Integer.parseInt(idValue));
+        int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+        int offset = (page - 1) * pageSize;
+
         User session = (User) httpsession.getAttribute(Constant.USER_SESSION_KEY);
         String username = session.getUsername();
         ContentCommunity contentDetailView = contentService.getContentDetailView(idValue, username);
 
         //댓글관련
-        List<SelectComment> selectNewComment = commentService.selectNewComment(idValue, username);
+        List<SelectComment> selectNewComment = commentService.selectNewComment(idValue, username, offset);
 
         //좋아요 개수 관련
 
@@ -65,9 +71,12 @@ public class ContentController {
         model.addAttribute("contentDetailView", contentDetailView);
 
         //댓글관련
+        model.addAttribute("totalPages", totalPages);
         model.addAttribute("selectNewComment", selectNewComment);
 //        model.addAttribute("commentSelectId", selectNewComment.get(0));
 //        주석처리한부분 왜안됐던거였는지??
+
+        model.addAttribute("page", page);
 
         //좋아요 개수 관련
 //

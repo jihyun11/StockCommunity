@@ -20,8 +20,11 @@ public class CommentService {
     }
 
 
-    public List<SelectComment> selectNewComment(String idValue, String username) {
-        return commentMapper.selectNewComment(idValue, username);
+    public List<SelectComment> selectNewComment(String idValue, String username, int offset) {
+        return commentMapper.selectNewComment(idValue, username, offset);
+    }
+    public int getCommentCount (int idValue) {
+        return commentMapper.getCommentCount(idValue);
     }
 
     public SelectComment selectCommentUpdateView(String commentIdValue) {

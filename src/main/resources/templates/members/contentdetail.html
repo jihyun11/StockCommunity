@@ -68,7 +68,7 @@
     <br>
     <br>
 
-<!--    <form th:action="@{/like/{idValue}(idValue=${contentDetailView.id})}" method="post">-->
+
     <!--댓글 보여주는공간-->
     <h3>댓글</h3>
     <table class="w3-table-all">
@@ -115,7 +115,26 @@
         </tr>
 
     </table>
-<!--    </form>-->
+
+    <!-- 페이지네이션 -->
+    <div class="pagination">
+        <ul style="display: flex;">
+            <li>
+                <a th:if="${page != 1}" th:href="@{/content/{idValue}(idValue=${idValue}, page=1)}" style="margin-right: 10px; list-style: none;">&laquo; 맨처음</a>
+            </li>
+
+            <li th:each="pageNumber : ${#numbers.sequence(1, totalPages)}" style="margin-right: 10px; list-style: none;">
+                <a th:href="@{/content/{idValue}(idValue=${idValue}, page=${pageNumber})}" th:text="${pageNumber}"></a>
+            </li>
+            <li>
+                <a th:if="${page < totalPages}" th:href="@{/content/{idValue}(idValue=${idValue}, page=${page+1})}" style="margin-right: 10px; list-style: none;">다음</a>
+            </li>
+            <li>
+                <a th:if="${page < totalPages}" th:href="@{/content/{idValue}(idValue=${idValue}, page=${totalPages})}" style="margin-right: 10px; list-style: none;">맨끝 &raquo;</a>
+            </li>
+        </ul>
+    </div>
+
 
 </div>
 

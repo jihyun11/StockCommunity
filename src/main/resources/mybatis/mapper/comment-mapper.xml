@@ -5,21 +5,8 @@
         INSERT INTO stockcomment (comment_content, comment_author, comment_content_id)
         values (#{commentContent}, #{commentAuthor}, #{commentContentId})
     </insert>
-<!--    인서트문은 왜 컬럼명이랑 도메인의 필드명이랑 같지 않아도 되는거?? 순서때문에 가능-->
 
-<!--    <select id="selectComment" resultType="com.jihyun.stockcommunity.domain.SelectComment">-->
-<!--        SELECT-->
-<!--            comment_id as commentSelectId,-->
-<!--            comment_content as commentSelectContent,-->
-<!--            comment_author as commentSelectAuthor,-->
-<!--            comment_date as commentSelectDate,-->
-<!--            comment_content_id as commentSelectContentId-->
-<!--        FROM-->
-<!--            stockcomment-->
-<!--        WHERE comment_content_id = #{idValue}-->
-<!--    </select>-->
-
-<!--    !!!!!!!!!!!!!!게시글별로 댓글 조회하는 새쿼리!!!!!!!!!!-->
+<!--    !!!!!!!!!!!!!!페이지네이션 포함한 게시글별로 댓글 조회하는 새쿼리!!!!!!!!!!-->
     <select id="selectNewComment" resultType="com.jihyun.stockcommunity.domain.SelectComment">
         SELECT sc.comment_id AS commentSelectId,
                sc.comment_content as commentSelectContent,
@@ -37,6 +24,17 @@
             GROUP BY commentSelectId
         ) hc ON sc.comment_id = hc.commentSelectId
         WHERE sc.comment_content_id = #{idValue}
+
+        LIMIT #{offset}, 5
+    </select>
+
+
+<!--    페이지네이션의 전체 댓글의 개수를 세는 쿼리-->
+<!--        resultType이 특정 도메인의 클래스를 가리키는 것이 아닌, 단순히 숫자 값만 가져오는 int라서 where절에 별칭 지정을 안해줘도 되는듯?-->
+    <select id="getCommentCount" resultType="int">
+    SELECT COUNT(*)
+    FROM stockcomment
+    WHERE comment_content_id = #{idValue}
     </select>
 
     <select id="selectCommentUpdateView" resultType="com.jihyun.stockcommunity.domain.SelectComment">

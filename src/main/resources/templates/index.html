@@ -1,73 +1,44 @@
 <!DOCTYPE HTML>
-<!--
-	Aerial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
-	<head>
-		<title>LadyBug</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/css/assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="/css/assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-		<div id="wrapper">
-			<div id="bg"></div>
-			<div id="overlay"></div>
-			<div id="main">
-
-				<!-- Header -->
-					<header id="header">
-						<h1>Stock Community</h1>
-						<p>Sell &nbsp;&bull;&nbsp; Buy &nbsp;&bull;&nbsp; And Trade</p>
-						<nav>
-							<ul>
-								<li><a href="/members/new" class="glyphicon glyphicon-user"><span class="label">회원 가입</span></a></li>
-								<li><a href="/members/view" class="glyphicon glyphicon-menu-hamburger"><span class="label">회원목록 보기</span></a></li>
-								<li th:if="${session['first'] != null}"><a href="/members/modify" class="glyphicon glyphicon-refresh"><span class="label">회원정보 수정</span></a></li>
-								<li><a href="/members/bye" class="glyphicon glyphicon-trash"><span class="label">회원 탈퇴</span></a></li><br>
-								<br>
-								<li><a href="/members/content" class="glyphicon glyphicon-print"><span class="label">게시글 작성</span></a></li>
-								<li><a href="/members/contentlist" class="glyphicon glyphicon-menu-hamburger"><span class="label">게시글목록 보기</span></a></li>
-								<li><a href="/members/contentmodify" class="glyphicon glyphicon-file"><span class="label">게시글 수정</span></a></li>
-								<li><a href="/members/contentbye" class="glyphicon glyphicon-trash"><span class="label">게시글 삭제</span></a></li><br>
-								<br>
-								<li th:if="${session['first'] == null}">
-									<a href="/members/login" class="glyphicon glyphicon-user">
-										<span class="label">로그인</span>
-									</a>
-								</li>
-								<li th:if="${session['first'] != null}">
-									<a href="/members/logout" class="glyphicon glyphicon-trash">
-										<span class="label">로그아웃</span>
-									</a>
-
-								</li>
-<!--								<li><a href="/members/login" class="glyphicon glyphicon-user"><span class="label">로그인</span></a></li>-->
-<!--								<li><a href="/members/logout" class="glyphicon glyphicon-trash"><span class="label">로그아웃</span></a></li><br>-->
-<!--								<br>-->
+<head>
+    <title>LadyBug</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body class="is-preload">
 
 
+<ul>
+    <li><a href="/members/new"><span class="label">회원 가입</span></a></li>
+    <li><a href="/members/view"><span class="label">회원목록 보기</span></a></li>
+    <li th:if="${session['first'] != null}"><a href="/members/modify"><span class="label">회원정보 수정</span></a></li>
+    <li><a href="/members/bye"><span class="label">회원 탈퇴</span></a></li>
+    <br>
+    <br>
+    <li><a href="/members/content"><span class="label">게시글 작성</span></a></li>
+    <li><a href="/members/contentlist"><span class="label">게시글목록 보기</span></a></li>
+    <li><a href="/members/contentmodify"><span class="label">게시글 수정</span></a></li>
+    <li><a href="/members/contentbye"><span class="label">게시글 삭제</span></a></li>
+    <br>
+    <br>
+    <li th:if="${session['first'] == null}">
+        <a href="/members/login">
+            <span class="label">로그인</span>
+        </a>
+    </li>
+    <li th:if="${session['first'] != null}">
+        <a href="/members/logout">
+            <span class="label">로그아웃</span>
+        </a>
 
-							</ul>
-						</nav>
-					</header>
+    </li>
+</ul>
+<footer id="footer">
+    <span class="copyright">&copy; Github/jihyun11. Design: 지현</a>.</span>
+</footer>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<span class="copyright">&copy; Github/jihyun11. Design: 지현</a>.</span>
-					</footer>
 
-			</div>
-		</div>
-		<script>
-			window.onload = function() { document.body.classList.remove('is-preload'); }
-			window.ontouchmove = function() { return false; }
-			window.onorientationchange = function() { document.body.scrollTop = 0; }
-		</script>
-	</body>
+</body>
 </html>

@@ -24,6 +24,7 @@
             GROUP BY commentSelectId
         ) hc ON sc.comment_id = hc.commentSelectId
         WHERE sc.comment_content_id = #{idValue}
+        order by sc.comment_id desc
 
         LIMIT #{offset}, 5
     </select>

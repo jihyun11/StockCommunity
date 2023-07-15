@@ -10,6 +10,7 @@
 
         FROM
             stockcontent
+        order by id desc
 
         LIMIT #{offset}, 5
     </select>

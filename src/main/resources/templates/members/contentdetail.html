@@ -4,6 +4,39 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+
+        .comment-textarea {
+            width: 100%;
+            height: 80px;
+        }
+
+        .comment-table {
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        .comment-table th, .comment-table td {
+            width: 80%;
+        }
+
+        .pagination {
+            margin-top: 20px;
+        }
+
+        .pagination ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .pagination li {
+            margin-right: 10px;
+        }
+
+        .pagination a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 <div class="w3-padding w3-display-topmiddle">
@@ -52,12 +85,18 @@
     <br>
 
     <h3>댓글창</h3>
-    <form th:action="@{/content/{idValue}(idValue=${contentDetailView.id})}" method="post">
-        <textarea class="comment-textarea" name="commentContent" rows="2" placeholder="댓글을 입력하세요..."></textarea>
-        <input type="text" name="commentAuthor" th:value="${commentAuthor}" readonly><br>
-        <input type="text" name="commentContentId" th:value="${contentDetailView.id}" readonly>
-        <input type="submit" value="전송">
-    </form>
+    <div style="display: flex;">
+        <form th:action="@{/content/{idValue}(idValue=${contentDetailView.id})}" method="post">
+            <div style="display: flex;">
+                <textarea class="comment-textarea" name="commentContent" rows="2" placeholder="댓글을 입력하세요..."></textarea>
+                <div style="display: flex; flex-direction: column;">
+                    <input type="text" name="commentAuthor" th:value="${commentAuthor}" readonly>
+                    <input type="text" name="commentContentId" th:value="${contentDetailView.id}" readonly>
+                    <input type="submit" value="전송">
+                </div>
+            </div>
+        </form>
+    </div>
 
     <br>
     <br>
@@ -71,7 +110,7 @@
 
     <!--댓글 보여주는공간-->
     <h3>댓글</h3>
-    <table class="w3-table-all">
+    <table class="w3-table-all" style="table-layout: auto;">
         <thead>
         <tr class="w3-blue">
             <th>댓글번호</th><br>
@@ -89,7 +128,8 @@
 
         <tr th:each="sc : ${selectNewComment}">
 
-            <td><input type="text" name="commentSelectId" th:value="${sc.commentSelectId}" readonly></td>
+            <td><input type="text" name="commentSelectId" th:value="${sc.commentSelectId}"
+                        readonly></td>
             <td th:text="${sc.commentSelectContent}"></td>
             <td th:text="${sc.commentSelectAuthor}" ></td>
             <td th:text="${sc.commentSelectDate}"></td>

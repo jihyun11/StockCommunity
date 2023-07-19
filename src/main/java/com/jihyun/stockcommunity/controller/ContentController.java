@@ -72,9 +72,9 @@ public class ContentController {
 
         //댓글관련
         model.addAttribute("totalPages", totalPages);
-        model.addAttribute("selectNewComment", selectNewComment);
-//        model.addAttribute("commentSelectId", selectNewComment.get(0));
-//        주석처리한부분 왜안됐던거였는지??
+        model.addAttribute("selectNewComment", selectNewComment); //ㄱ
+//        ㄴ: model.addAttribute("commentSelectId", selectNewComment.get(0));
+
 
         model.addAttribute("page", page);
 

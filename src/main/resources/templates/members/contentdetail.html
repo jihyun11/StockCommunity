@@ -85,18 +85,15 @@
     <br>
 
     <h3>댓글창</h3>
-    <div style="display: flex;">
-        <form th:action="@{/content/{idValue}(idValue=${contentDetailView.id})}" method="post">
-            <div style="display: flex;">
-                <textarea class="comment-textarea" name="commentContent" rows="2" placeholder="댓글을 입력하세요..."></textarea>
-                <div style="display: flex; flex-direction: column;">
-                    <input type="text" name="commentAuthor" th:value="${commentAuthor}" readonly>
-                    <input type="text" name="commentContentId" th:value="${contentDetailView.id}" readonly>
-                    <input type="submit" value="전송">
-                </div>
-            </div>
-        </form>
-    </div>
+    <form th:action="@{/content/{idValue}(idValue=${contentDetailView.id})}" method="post">
+        <textarea class="w3-input w3-border" style="resize:none" name="commentContent" rows="2" placeholder="댓글을 입력하세요..."></textarea>
+        <div style="display: flex; flex-direction: column;">
+            <input type="hidden" name="commentAuthor" th:value="${commentAuthor}" readonly>
+            <input type="hidden" name="commentContentId" th:value="${contentDetailView.id}" readonly>
+            <input class="w3-bar-item w3-button w3-teal" type="submit" value="전송">
+        </div>
+    </form>
+
 
     <br>
     <br>
@@ -106,34 +103,43 @@
 
     <br>
     <br>
-
-
     <!--댓글 보여주는공간-->
-    <h3 style="margin-bottom: 0;">댓글</h3>
-    <table class="w3-table-all comment-table" style="table-layout: auto;">
+    <h3>댓글</h3>
+    <table class="w3-table-all comment-table" style="table-layout: fixed; width: 100%;">
+
+        <colgroup>
+            <col style="width: 40%;">
+            <col style="width: 10%;">
+            <col style="width: 10%;">
+            <col style="width: 10%;">
+            <col style="width: 10%;">
+            <col style="width: 10%;">
+            <col style="width: 10%;">
+        </colgroup>
+
         <thead>
         <tr class="w3-blue">
-            <th>댓글번호</th><br>
-            <th>내용</th><br>
-            <th>작성자</th><br>
-            <th>작성시간</th><br>
-            <th>글작성번호</th><br>
-            <th>수정하기</th><br>
-            <th>삭제하기</th><br>
-            <th>좋아요</th><br>
-            <th>좋아요 수</th><br>
+<!--            <th>댓글번호</th>-->
+            <th>내용</th>
+            <th>작성자</th>
+            <th>작성시간</th>
+<!--            <th>글작성번호</th>-->
+            <th>수정하기</th>
+            <th>삭제하기</th>
+            <th>좋아요</th>
+            <th>좋아요 수</th>
 
         </tr>
         </thead>
 
         <tr th:each="sc : ${selectNewComment}">
 
-            <td><input type="text" name="commentSelectId" th:value="${sc.commentSelectId}"
-                        readonly></td>
+            <input type="hidden" name="commentSelectId" th:value="${sc.commentSelectId}"
+                        readonly>
             <td th:text="${sc.commentSelectContent}"></td>
             <td th:text="${sc.commentSelectAuthor}" ></td>
             <td th:text="${sc.commentSelectDate}"></td>
-            <td th:text="${sc.commentSelectContentId}"></td>
+<!--            <td th:text="${sc.commentSelectContentId}"></td>-->
             <td><a th:href="@{/comment/modify/{commentIdValue}(commentIdValue=${sc.commentSelectId})}">댓글 수정하기</a></td>
             <td><a th:href="@{/comment/delete/{commentIdValue}(commentIdValue=${sc.commentSelectId})}">댓글 삭제하기</a></td>
             <form th:if="${sc.myLike != 0}" th:action="@{/like/cancel/{idValue}(idValue=${contentDetailView.id})}" method="post">

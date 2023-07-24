@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>☆찌★부☆월★드☆</h1>
+<h2>레벨업 신청하기</h2>
+<form action="/members/maple" method="post">
+    현재 레벨은? : <input type="text" name="nowLevel"><br>
+    목표 레벨? : <input type="text" name="goalLevel"><br>
+    캐릭터 월드: <input type="text" name="world"><br>
+    캐릭터 이름: <input type="text" name="name"><br>
+    전화번호: <input type="text" name="phone"><br>
+    <input type="submit" value="전송"><br>
+</form>
+
+<form action="/members/maple" method="get">
+<h2>신청자 명단</h2>
+    <table class="w3-table-all">
+        <thead>
+        <tr class="w3-green">
+            <th>캐릭터 이름</th>
+            <th>월드</th>
+        </tr>
+        </thead>
+        <tr th:each="maple : ${maple}">
+            <td><a th:href="@{/level/{idValue}(idValue=${maple.name})}" th:text="${maple.name}"></a></td>
+            <td th:text="${maple.world}"></td>
+        </tr>
+    </table>
+</form>
+
+
+
+</body>
+</html>

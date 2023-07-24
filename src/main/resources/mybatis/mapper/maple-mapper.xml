@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jihyun.stockcommunity.mapper.MapleMapper">
+
+    <insert id="insertMapleLevel" parameterType="com.jihyun.stockcommunity.domain.Maple">
+        INSERT INTO mapleLevel (nowLevel, goalLevel, world, name, phone)
+        values (#{nowLevel}, #{goalLevel}, #{world}, #{name}, #{phone})
+    </insert>
+
+    <select id="mapleLevel" resultType="com.jihyun.stockcommunity.domain.Maple">
+        SELECT
+            name,
+            world
+        FROM
+            mapleLevel
+        order by name desc
+    </select>
+
+</mapper>

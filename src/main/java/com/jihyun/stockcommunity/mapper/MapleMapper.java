@@ -11,4 +11,6 @@ public interface MapleMapper {
     void insertMapleLevel(Maple maple);
 
     List<Maple> mapleLevel();
+
+    void deleteMaple(String name, String world);
 }

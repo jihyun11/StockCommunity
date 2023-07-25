@@ -16,4 +16,9 @@
         order by name desc
     </select>
 
+    <delete id="deleteMaple" parameterType="com.jihyun.stockcommunity.domain.Maple">
+        DELETE FROM mapleLevel
+        WHERE name = #{name} and world = #{world}
+    </delete>
+
 </mapper>

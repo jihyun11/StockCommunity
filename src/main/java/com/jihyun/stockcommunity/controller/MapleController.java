@@ -44,4 +44,16 @@ public class MapleController {
         mapleService.insertMaple(maple1);
         return "redirect:/members/maple";
     }
+
+    @GetMapping("/members/deleteM")
+    public String deleteM() {
+        return "/members/deleteM";
+    }
+
+    @PostMapping("/members/deleteM")
+    public String deleteMaple(String name, String world) {
+        mapleService.deleteMaple(name, world);
+
+        return "redirect:/members/maple";
+    }
 }

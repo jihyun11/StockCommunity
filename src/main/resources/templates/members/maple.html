@@ -28,6 +28,12 @@
         <tr th:each="maple : ${maple}">
             <td><a th:href="@{/level/{idValue}(idValue=${maple.name})}" th:text="${maple.name}"></a></td>
             <td th:text="${maple.world}"></td>
+            <form action="/members/deleteM" method="post">
+                <td><input type=hidden name="name" th:value="${maple.name}"></a></td>
+                <td><input type=hidden name="world" th:value="${maple.world}"></td>
+                <td><input type="submit" value="삭제">
+                </td>
+            </form>
         </tr>
     </table>
 </form>

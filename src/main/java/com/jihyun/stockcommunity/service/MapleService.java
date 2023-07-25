@@ -25,4 +25,8 @@ public class MapleService {
         return mapleMapper.mapleLevel();
     }
 
+    public void deleteMaple(String name, String world) {
+        mapleMapper.deleteMaple(name, world);
+    }
+
 }

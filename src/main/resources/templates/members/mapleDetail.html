@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>신청서 상세페이지</title>
+</head>
+<body>
+    <form action="/level/{idValue}" method="post">
+        <h2><label th:text="${mapleDetail.name}"></label> 님의 신청서</h2>
+        <br>
+        현재 레벨은? : <input type="text" name="nowLevel" th:value="${mapleDetail.nowLevel}"><br>
+        목표 레벨? : <input type="text" name="goalLevel" th:value="${mapleDetail.goalLevel}"><br>
+        캐릭터 월드: <input type="text" name="world" th:value="${mapleDetail.world}"><br>
+        캐릭터 이름: <input type="text" name="name" th:value="${mapleDetail.name}" readonly><br>
+        전화번호: <input type="text" name="phone" th:value="${mapleDetail.phone}"><br>
+        <br>
+
+        <td><input type="submit" value="수정">
+
+    </form>
+
+
+    <div style="display: flex;">
+
+
+
+    <form action="/members/deleteM" method="post">
+        <td><input type=hidden name="name" th:value="${mapleDetail.name}"></a></td>
+        <td><input type=hidden name="world" th:value="${mapleDetail.world}"></td>
+        <td><input type="submit" value="삭제">
+        </td>
+    </form>
+
+        <a href="/members/maple">
+            <button>뒤로가기</button>
+        </a>
+    </div>
+</div>
+
+
+</body>
+</html>
+
+
+
+

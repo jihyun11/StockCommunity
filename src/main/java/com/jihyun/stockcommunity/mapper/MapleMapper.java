@@ -13,4 +13,13 @@ public interface MapleMapper {
     List<Maple> mapleLevel();
 
     void deleteMaple(String name, String world);
+
+    Maple mapleSelectDetail(String idValue);
+
+    void mapleUpdateDetail(int nowLevel,
+                           int goalLevel,
+                           String world,
+                           String name,
+                           String phone
+                           );
 }

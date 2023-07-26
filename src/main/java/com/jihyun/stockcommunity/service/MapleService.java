@@ -29,4 +29,17 @@ public class MapleService {
         mapleMapper.deleteMaple(name, world);
     }
 
+    public Maple mapleSelectDetail(String idValue) {
+        return mapleMapper.mapleSelectDetail(idValue);
+    }
+
+    public void updateMaple(int nowLevel,
+                            int goalLevel,
+                            String world,
+                            String name,
+                            String phone
+                            ) {
+        mapleMapper.mapleUpdateDetail(nowLevel, goalLevel, world, name, phone);
+    }
+
 }

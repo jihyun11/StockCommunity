@@ -21,4 +21,26 @@
         WHERE name = #{name} and world = #{world}
     </delete>
 
+    <select id="mapleSelectDetail" resultType="com.jihyun.stockcommunity.domain.Maple">
+        SELECT
+            nowLevel,
+            goalLevel,
+            world,
+            name,
+            phone
+        FROM
+            mapleLevel
+        where name = #{idValue}
+    </select>
+
+    <update id="mapleUpdateDetail" parameterType="com.jihyun.stockcommunity.domain.Maple">
+        UPDATE mapleLevel
+        SET nowLevel = #{nowLevel},
+            goalLevel = #{goalLevel},
+            world = #{world},
+            name = #{name},
+            phone = #{phone}
+        WHERE name = #{name} AND world = #{world}
+    </update>
+
 </mapper>

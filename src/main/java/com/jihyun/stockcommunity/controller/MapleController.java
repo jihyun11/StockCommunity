@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -54,6 +56,26 @@ public class MapleController {
     public String deleteMaple(String name, String world) {
         mapleService.deleteMaple(name, world);
 
+        return "redirect:/members/maple";
+    }
+
+    @GetMapping("/level/{idValue}")
+    public String mapleSelectDetail(@PathVariable("idValue") String idValue, Model model) {
+        Maple maple = (mapleService.mapleSelectDetail(idValue));
+        model.addAttribute("mapleDetail", maple);
+        return "/members/mapleDetail";
+    }
+
+    @PostMapping("/level/{idValue}")
+    public String mapleUpdateDetail(@PathVariable("idValue") String idValue,
+                                    @RequestParam("nowLevel") int nowLevel,
+                                    @RequestParam("goalLevel") int goalLevel,
+                                    @RequestParam("world") String world,
+                                    @RequestParam("name") String name,
+                                    @RequestParam("phone") String phone) {
+        mapleService.updateMaple(nowLevel, goalLevel, world, name, phone);
+        log.info("업데이트문 작동");
+        log.info(String.valueOf(nowLevel), goalLevel, world, name, phone);
         return "redirect:/members/maple";
     }
 }

@@ -34,34 +34,8 @@
 </div>
 
 
-<ul>
-    <li><a href="/members/new"><span class="label">회원 가입</span></a></li>
-    <li><a href="/members/view"><span class="label">회원목록 보기</span></a></li>
-    <li th:if="${session['first'] != null}"><a href="/members/modify"><span class="label">회원정보 수정</span></a></li>
-    <li><a href="/members/bye"><span class="label">회원 탈퇴</span></a></li>
-    <br>
-    <br>
-    <li><a href="/members/content"><span class="label">게시글 작성</span></a></li>
-    <li><a href="/members/contentlist"><span class="label">게시글목록 보기</span></a></li>
-    <li><a href="/members/contentmodify"><span class="label">게시글 수정</span></a></li>
-    <li><a href="/members/contentbye"><span class="label">게시글 삭제</span></a></li>
-    <br>
-    <br>
-    <li th:if="${session['first'] == null}">
-        <a href="/members/login">
-            <span class="label">로그인</span>
-        </a>
-    </li>
-    <li th:if="${session['first'] != null}">
-        <a href="/members/logout">
-            <span class="label">로그아웃</span>
-        </a>
 
-    </li>
-    <br>
-    <li><a href="/members/maple"><span class="label">협력업체 ☆찌부월드★ 바로가기</span></a></li>
-</ul>
-
+    <a href="/members/maple"><span class="label">협력업체 ☆찌부월드★ 바로가기</span></a>
 <footer id="footer">
     <span class="copyright">&copy; Github/jihyun11</a>.</span>
 </footer>

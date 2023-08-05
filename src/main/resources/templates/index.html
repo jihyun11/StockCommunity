@@ -30,7 +30,9 @@
     </div>
     <a href="/members/modify" th:if="${session['first'] != null}" class="w3-bar-item w3-button">내정보</a>
     <a href="/members/login" th:if="${session['first'] == null}" class="w3-bar-item w3-button">로그인</a>
-    <a href="/members/logout" th:if="${session['first'] != null}" class="w3-bar-item w3-button">로그아웃</a>
+    <form action="/members/logout" method="post">
+        <input type="submit" th:if="${session['first'] != null}" class="w3-bar-item w3-button" value="로그아웃">
+    </form>
 </div>
 
 

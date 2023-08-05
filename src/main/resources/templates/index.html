@@ -32,6 +32,7 @@
     <a href="/members/login" th:if="${session['first'] == null}" class="w3-bar-item w3-button">로그인</a>
     <form action="/members/logout" method="post">
         <input type="submit" th:if="${session['first'] != null}" class="w3-bar-item w3-button" value="로그아웃">
+<!--        로그아웃이 바로 되도록 버튼 수정-->
     </form>
 </div>
 

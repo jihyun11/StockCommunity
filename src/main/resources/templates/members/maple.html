@@ -20,7 +20,6 @@
     <input type="submit" value="전송"><br>
 </form>
 
-<!--<input type="text" placeholder="검색"><button value="검색">검색</button>-->
 
 <form action="/members/maple" method="get">
 <h2>신청자 명단</h2>
@@ -44,6 +43,8 @@
     </table>
     <div th:if="${maple.size() == 0}">신청자가 없습니다.</div>
 </form>
+
+<a href="/members/maplecontent" class="w3-bar-item w3-button">게시글 쓰기</a>
 
 
 

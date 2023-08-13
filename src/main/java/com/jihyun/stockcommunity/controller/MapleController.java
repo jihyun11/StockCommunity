@@ -78,4 +78,9 @@ public class MapleController {
         log.info(String.valueOf(nowLevel), goalLevel, world, name, phone);
         return "redirect:/members/maple";
     }
+
+    @GetMapping("/members/maplecontent")
+    public String maplecontent() {
+        return "/members/maplecontent";
+    }
 }

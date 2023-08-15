@@ -5,7 +5,20 @@
     <title>Title</title>
 </head>
 <body>
-<h2>게시글 작성하는 공간</h2>
+
+<div class="w3-padding w3-display-topmiddle">
+    <form action="/members/maplecontent" method="post">
+        <h2>게시글 쓰기</h2>
+        <input class="w3-input" type="text" id="username" name="username" placeholder="별명을 입력하세요"><br>
+        <label for="content">내용:</label>
+        <textarea class="w3-input" id="content" name="content" required></textarea><br>
+        <label for="title">제목:</label>
+        <input class="w3-input" type="text" id="title" name="title" required><br>
+        <div class="submit">
+            <input type="submit" value="작성">
+        </div>
+    </form>
+</div>
 
 </body>
 </html>

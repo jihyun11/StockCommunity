@@ -6,10 +6,37 @@
 </head>
 <body>
 <h2>당신의 소원을 적어보세요!</h2>
+<form action="/members/miracle" method="post">
 <input type="text" name="miracle">
 <input type="submit" value="이루어져랏">
+</form>
 
-<h3>소원 목록</h3>
+
+    <h2>소원 목록</h2>
+    <table class="w3-table-all">
+        <thead>
+        <tr class="w3-green">
+            <th>소원 번호</th>
+            <th>소원</th>
+            <th>소원 시간</th>
+        </tr>
+        </thead>
+        <tr th:each="m: ${miracles}">
+            <td th:text="${m.miracle_id}"></a></td>
+            <td th:text="${m.miracle}"></td>
+            <td th:text="${m.miracle_date}"></td>
+            <form action="/members/deleteMiracle" method="post">
+                <td><input type=hidden name="miracle_id" th:value="${m.miracle_id}"></td>
+                <td><input type=hidden name="miracle" th:value="${m.miracle}"></td>
+                <td><input type="hidden" name="miracle_date" th:value="${m.miracle_date}"></td>
+                <td><input type="submit" value="삭제">
+                </td>
+            </form>
+        </tr>
+    </table>
+    <div th:if="${miracles.size() == 0}">신청자가 없습니다.</div>
+
+
 
 </body>
 </html>

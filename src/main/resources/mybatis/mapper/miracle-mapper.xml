@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jihyun.stockcommunity.mapper.MiracleMapper">
+    <insert id="insertMiracle" parameterType="com.jihyun.stockcommunity.domain.Miracle">
+        INSERT INTO miracle (miracle)
+        values (#{miracle})
+    </insert>
+
+    <select id="selectMiracle" resultType="com.jihyun.stockcommunity.domain.Miracle">
+        SELECT
+            miracle_id,
+            miracle,
+            miracle_date
+        FROM
+            miracle
+        order by miracle_date desc
+    </select>
+
+    <delete id="deleteMiracle" parameterType="com.jihyun.stockcommunity.domain.Miracle">
+        DELETE FROM miracle
+        WHERE miracle_id = #{miracle_id} and miracle = #{miracle} and miracle_date = #{miracle_date}
+    </delete>
+
+</mapper>
